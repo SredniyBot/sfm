@@ -17,6 +17,7 @@ public class MainScreen implements Screen {
 
     public MainScreen() {
         TextureService.init();
+        FontService.init();
         mCamera = new OrthographicCamera();
         mViewport = new FitViewport(SacuraFortune.SCREEN_WIDTH, SacuraFortune.SCREEN_HEIGHT, mCamera);
         gameStage=new GameStage(mViewport);
@@ -31,6 +32,7 @@ public class MainScreen implements Screen {
 
     @Override
     public void render(float delta) {
+//        if(!TextureService.isReady())return;
         mCamera.update();
 
         Gdx.gl.glClearColor(65 / 255f, 65 / 255f, 65 / 255f, 1f); // просто цвет фона

@@ -14,6 +14,7 @@ public abstract class Button extends Actor {
     private float pressureTime=0;
     private Rectangle rectangle;
 
+    private boolean isPressed=false;
 
     public Button(Viewport viewport){
         this.viewport=viewport;
@@ -23,7 +24,7 @@ public abstract class Button extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        if (getTextureRegion()!=null)
+        if (getTextureRegion()!=null&&isPressed)
             batch.draw(getTextureRegion(),getRectX(),getRectY());
     }
 
@@ -33,10 +34,13 @@ public abstract class Button extends Actor {
             Vector2 touch = viewport.unproject(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
             if(rectangle.contains(touch)) {
                 pressureTime+=delta;
+                isPressed=true;
             }else {
+                isPressed=false;
                 pressureTime=0;
             }
         }else {
+            isPressed=false;
             if (pressureTime>0&&pressureTime<1){
                 pressureTime=0;
                 action();
