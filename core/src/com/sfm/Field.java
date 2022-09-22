@@ -12,8 +12,10 @@ public class Field extends Group implements ResultChecker{
     private final Column c3=new Column(824, 0,this);
     private final Column c4=new Column(1104,0,this);
     private final Column c5=new Column(1382,0,this);
-    private final LineService lineService=new LineService();
+    private final WinService winService =new WinService();
 
+    private boolean startingRespin=false;
+    private float backTimer=0;
     private int finishCount=0;
     private float cost=0;
     private int respinCount=0;
@@ -26,7 +28,7 @@ public class Field extends Group implements ResultChecker{
         addActor(c3);
         addActor(c2);
         addActor(c1);
-        addActor(lineService);
+        addActor(winService);
     }
 
     public void spin(boolean respin) {
@@ -76,23 +78,33 @@ public class Field extends Group implements ResultChecker{
             l.add(new Array<>(new Badge[]{r1.get(1),r2.get(2),r3.get(2),r4.get(2),r5.get(1)}));
             l.add(new Array<>(new Badge[]{r1.get(0),r2.get(0),r3.get(1),r4.get(2),r5.get(2)}));
             l.add(new Array<>(new Badge[]{r1.get(2),r2.get(2),r3.get(1),r4.get(0),r5.get(0)}));
+            int currentRespins=0;
             for (int i=0;i<l.size;i++){
-                float currentCost = getCostAndAddRespin(l.get(i));
+                float currentCost = getCost(l.get(i));
+                int cr=getRespins(l.get(i));
+                if (cr>currentRespins)currentRespins=cr;
                 if (currentCost > 0) {
                     for (int k=0;k<l.get(i).size;k++){
-                        if ((l.get(i).get(k).getBadgeType()==findFirstBadgeType(l.get(i))||
-                                l.get(i).get(k).getBadgeType()==BadgeType.LADY))
+                        if (l.get(i).get(k).getBadgeType()==findFirstBadgeType(l.get(i))||
+                                l.get(i).get(k).getBadgeType()==BadgeType.LADY){
                             l.get(i).get(k).startAnimation();
+                        }
                         else break;
                     }
-                    lineService.show(i);
+                    winService.showLine(i);
                     cost+=currentCost;
                 }
             }
 
+            if (currentRespins>0){
+                winService.showRespin(currentRespins);
+            }
+            respinCount+=currentRespins;
+
             if (respinCount>0){
                 respinCount--;
-                spin(true);
+                startingRespin=true;
+                backTimer=2;
                 return;
             }
 
@@ -105,7 +117,7 @@ public class Field extends Group implements ResultChecker{
     }
 
 
-    private float getCostAndAddRespin(Array<Badge> badges){
+    private float getCost(Array<Badge> badges){
         BadgeType badgeType=findFirstBadgeType(badges);
         int i=badgeCount(badgeType,badges);
         float s=0;
@@ -116,13 +128,10 @@ public class Field extends Group implements ResultChecker{
                 case SWORD:
                     if(i==3) {
                         s = 0.5f;
-                        respinCount+=1;
                     }else if (i==4){
                         s=1f;
-                        respinCount+=2;
                     }else if (i==5){
                         s=2f;
-                        respinCount+=3;
                     }
                     return s;
                 case DED:
@@ -154,6 +163,35 @@ public class Field extends Group implements ResultChecker{
         }
         return 0;
     }
+    private int getRespins(Array<Badge> badges){
+        BadgeType badgeType=findFirstBadgeType(badges);
+        int i=badgeCount(badgeType,badges);
+        if (badgeType==BadgeType.SWORD) {
+            if (i >= 3) {
+                if (i == 3) {
+                    return 1;
+                } else if (i == 4) {
+                    return 2;
+                } else if (i == 5) {
+                    return 3;
+                }
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        if (backTimer>-10) backTimer-=delta;
+        if(startingRespin&&backTimer<=0){
+            if (winService.isReady()) {
+                startingRespin=false;
+                spin(true);
+            }
+        }
+    }
+
     private BadgeType findFirstBadgeType(Array<Badge> badges){
         for (Badge badge:badges){
             if (badge.getBadgeType()!=BadgeType.LADY)return badge.getBadgeType();

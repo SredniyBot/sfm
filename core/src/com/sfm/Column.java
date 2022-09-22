@@ -13,8 +13,7 @@ public class Column extends Group implements Rotator {
 
     private SpinMoment spinMoment;
 
-    private ResultChecker resultChecker;
-    private int spinBias=0;
+    private final ResultChecker resultChecker;
     private int finalOffset=0;
     private final int sizeOfBadge = 255;
     private float v;
@@ -200,7 +199,6 @@ public class Column extends Group implements Rotator {
         return spinMoment == SpinMoment.STOP;
     }
     public void spinTo(int spin){
-        spinBias+=spin;
         finalOffset= spin*sizeOfBadge;
         spinMoment=SpinMoment.START;
     }

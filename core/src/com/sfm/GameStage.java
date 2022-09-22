@@ -12,14 +12,14 @@ public class GameStage extends Stage implements ButtonReaction {
     private Money money;
     private Win win;
     public GameStage(Viewport viewport) {
-
+        setViewport(viewport);
 
         money=new Money();
         win=new Win(money);
         bet=new Bet(money,win);
         field = new Field(bet);
-        setViewport(viewport);
-        addActor(new Background());
+
+        addActor(new BackgroundRam());
         addActor(field);
         addActor(new TopGround());
         addActor(bet);

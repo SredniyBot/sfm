@@ -10,9 +10,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public abstract class Button extends Actor {
 
-    private Viewport viewport;
+    private final Viewport viewport;
     private float pressureTime=0;
-    private Rectangle rectangle;
+    private final Rectangle rectangle;
 
     private boolean isPressed=false;
 

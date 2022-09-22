@@ -39,6 +39,7 @@ public enum BadgeType {
     }
 
     public static BadgeType getRandom(){
+        if (new Random().nextInt(3)==0)return SWORD;
         if (new Random().nextInt(15)==0)return LADY;
         switch (new Random().nextInt(6)){
             case 0:

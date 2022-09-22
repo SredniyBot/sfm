@@ -11,10 +11,7 @@ import java.util.Map;
 public class TextureService {
 
     private static AssetManager assetManager;
-    public static Array<TextureRegion> greenCoinTextures;
     public static Map<String ,TextureRegion> textureRegionMap;
-
-
     public static Array<TextureRegion> textureRegionMapLady;
     public static Array<TextureRegion> textureRegionMapCoinB;
     public static Array<TextureRegion> textureRegionMapCoinG;
@@ -23,26 +20,25 @@ public class TextureService {
     public static Array<TextureRegion> textureRegionMapMan;
     public static Array<TextureRegion> textureRegionMapSword;
     public static Array<TextureRegion> textureRegionMapLines;
+    public static Array<TextureRegion> textureRegionMapRespins;
 
     public static void init(){
         dispose();
         assetManager=new AssetManager();
         assetManager.load("back.png",Texture.class);
-        assetManager.load("coinB.png",Texture.class);
-        assetManager.load("coinG.png",Texture.class);
-        assetManager.load("coinGr.png",Texture.class);
-        assetManager.load("ded.png",Texture.class);
-        assetManager.load("lady.png",Texture.class);
-        assetManager.load("man.png",Texture.class);
-        assetManager.load("sword.png",Texture.class);
-        assetManager.load("spin.png",Texture.class);
         assetManager.load("real.png",Texture.class);
         assetManager.load("auto.png",Texture.class);
+        assetManager.load("bg.png",Texture.class);
+        assetManager.load("ramka.png",Texture.class);
         assetManager.load("bgtogether2.png",Texture.class);
+        assetManager.load("tg.png",Texture.class);
+
+        for (int i=1;i<=3;i++){
+            assetManager.load("respin/"+i+".png",Texture.class);
+        }
 
         for (int i=1;i<=9;i++){
             assetManager.load("lines/"+i+".png",Texture.class);
-
         }
 
         for (int i=1;i<=12;i++){
@@ -71,6 +67,7 @@ public class TextureService {
         textureRegionMapMan     =getArrayFromAssets(BadgeType.MAN.getNumberOfFrames(),"man",322,321,27);
         textureRegionMapSword   =getArrayFromAssets(BadgeType.SWORD.getNumberOfFrames(),"sword",321,685,8);
         textureRegionMapLines=getLinesArray();
+        textureRegionMapRespins=getRespinsArray();
         textureRegionMap=fillTextureRegionMap();
     }
 
@@ -98,43 +95,45 @@ public class TextureService {
         temp.add(new TextureRegion(assetManager.<Texture>get("lines/9.png")));
         return temp;
     }
+
+    private static Array<TextureRegion> getRespinsArray(){
+        Array<TextureRegion> temp=new Array<>();
+        temp.add(new TextureRegion(assetManager.<Texture>get("respin/1.png")));
+        temp.add(new TextureRegion(assetManager.<Texture>get("respin/2.png")));
+        temp.add(new TextureRegion(assetManager.<Texture>get("respin/3.png")));
+        return temp;
+    }
     public static Map<String ,TextureRegion> fillTextureRegionMap(){
         Map<String,TextureRegion> res=new HashMap<>();
-        res.put("bg",new TextureRegion(assetManager.<Texture>get("back.png"),0,0,1920,1080));
+        res.put("bg",new TextureRegion(assetManager.<Texture>get("bg.png"),0,0,1920,1080));
+        res.put("ramka",new TextureRegion(assetManager.<Texture>get("ramka.png"),0,0,1920,1080));
         res.put("tg",new TextureRegion(assetManager.<Texture>get("bgtogether2.png"),0,0,1920,1080));
-        res.put("coinB",new TextureRegion(assetManager.<Texture>get("coinB.png"),0,0,256,256));
-        res.put("coinG",new TextureRegion(assetManager.<Texture>get("coinG.png"),0,0,256,256));
-        res.put("coinGr",new TextureRegion(assetManager.<Texture>get("coinGr.png"),0,0,256,256));
-        res.put("ded",new TextureRegion(assetManager.<Texture>get("ded.png"),0,0,256,256));
-        res.put("lady",new TextureRegion(assetManager.<Texture>get("lady.png"),0,0,345,818));
-        res.put("man",new TextureRegion(assetManager.<Texture>get("man.png"),0,0,256,256));
-        res.put("sword",new TextureRegion(assetManager.<Texture>get("sword.png"),0,0,302,541));
-        res.put("spin",new TextureRegion(assetManager.<Texture>get("spin.png"),0,0,309,127));
+        res.put("tg2",new TextureRegion(assetManager.<Texture>get("tg.png"),0,0,1920,1080));
         res.put("real",new TextureRegion(assetManager.<Texture>get("real.png"),0,0,415,118));
         res.put("auto",new TextureRegion(assetManager.<Texture>get("auto.png"),0,0,218,77));
         return res;
-    }
-
-
-
-    private static Array<TextureRegion> textureRegionsInit(Texture booksTexture,int w,int h,int count,int dest){
-        Array<TextureRegion> textures = new Array<>();
-        for (int i=0;i<count;i++){
-            textures.add(new TextureRegion(booksTexture,(w+dest)*i,0,w,h));
-        }
-        return textures;
     }
 
     public static TextureRegion getLineRegion(int number){
         return textureRegionMapLines.get(number);
     }
 
+    public static TextureRegion getRespinRegion(int number){
+        return textureRegionMapRespins.get(number);
+    }
+
 
     public static TextureRegion getBgTexture(){
         return textureRegionMap.get("bg");
     }
+    public static TextureRegion getRamkaTexture(){
+        return textureRegionMap.get("ramka");
+    }
     public static TextureRegion getTgTexture(){
         return textureRegionMap.get("tg");
+    }
+    public static TextureRegion getTg2Texture(){
+        return textureRegionMap.get("tg2");
     }
     public static TextureRegion getSpinTexture(){
         return textureRegionMap.get("spin");
@@ -144,10 +143,6 @@ public class TextureService {
     }
     public static TextureRegion getRealTexture(){
         return textureRegionMap.get("real");
-    }
-    public static TextureRegion getCoinTextureById(int id){
-        id=id%greenCoinTextures.size;
-        return greenCoinTextures.get(id);
     }
 
     public static TextureRegion getBadgeTexture(BadgeType badgeType,int frameNumber){
@@ -167,9 +162,6 @@ public class TextureService {
             default:
                 return textureRegionMapCoinB.get(frameNumber);
         }
-    }
-    public static boolean isReady(){
-        return assetManager.update();
     }
     public static void dispose() {
         if (assetManager!=null)
