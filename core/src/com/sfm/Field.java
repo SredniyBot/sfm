@@ -15,7 +15,9 @@ public class Field extends Group implements ResultChecker{
     private final LineService lineService=new LineService();
 
     private int finishCount=0;
-    private Bet bet;
+    private float cost=0;
+    private int respinCount=0;
+    private final Bet bet;
 
     Field(Bet bet){
         this.bet=bet;
@@ -27,9 +29,9 @@ public class Field extends Group implements ResultChecker{
         addActor(lineService);
     }
 
-    public void spin() {
+    public void spin(boolean respin) {
         if (c1.isSpinning() && c2.isSpinning() && c3.isSpinning() && c4.isSpinning() && c5.isSpinning()){
-            bet.setLock(true);
+            bet.spin(respin);
             c1.spinTo(30);
             c2.spinTo(45);
             c3.spinTo(60);
@@ -65,36 +67,45 @@ public class Field extends Group implements ResultChecker{
             Array<Badge> r5 = c5.getResult();
 
             Array<Array<Badge>> l= new Array<>();
-            l.add(new Array<>(new Badge[]{r5.get(1),r4.get(1),r3.get(1),r2.get(1),r1.get(1)}));
-            l.add(new Array<>(new Badge[]{r5.get(0),r4.get(0),r3.get(0),r2.get(0),r1.get(0)}));
-            l.add(new Array<>(new Badge[]{r5.get(2),r4.get(2),r3.get(2),r2.get(2),r1.get(2)}));
-            l.add(new Array<>(new Badge[]{r5.get(0),r4.get(1),r3.get(2),r2.get(1),r1.get(0)}));
-            l.add(new Array<>(new Badge[]{r5.get(2),r4.get(1),r3.get(0),r2.get(1),r1.get(2)}));
-            l.add(new Array<>(new Badge[]{r5.get(1),r4.get(0),r3.get(0),r2.get(0),r1.get(1)}));
-            l.add(new Array<>(new Badge[]{r5.get(1),r4.get(2),r3.get(2),r2.get(2),r1.get(1)}));
-            l.add(new Array<>(new Badge[]{r5.get(0),r4.get(0),r3.get(1),r2.get(2),r1.get(2)}));
-            l.add(new Array<>(new Badge[]{r5.get(2),r4.get(2),r3.get(1),r2.get(0),r1.get(0)}));
-            float cost=0;
+            l.add(new Array<>(new Badge[]{r1.get(1),r2.get(1),r3.get(1),r4.get(1),r5.get(1)}));
+            l.add(new Array<>(new Badge[]{r1.get(0),r2.get(0),r3.get(0),r4.get(0),r5.get(0)}));
+            l.add(new Array<>(new Badge[]{r1.get(2),r2.get(2),r3.get(2),r4.get(2),r5.get(2)}));
+            l.add(new Array<>(new Badge[]{r1.get(0),r2.get(1),r3.get(2),r4.get(1),r5.get(0)}));
+            l.add(new Array<>(new Badge[]{r1.get(2),r2.get(1),r3.get(0),r4.get(1),r5.get(2)}));
+            l.add(new Array<>(new Badge[]{r1.get(1),r2.get(0),r3.get(0),r4.get(0),r5.get(1)}));
+            l.add(new Array<>(new Badge[]{r1.get(1),r2.get(2),r3.get(2),r4.get(2),r5.get(1)}));
+            l.add(new Array<>(new Badge[]{r1.get(0),r2.get(0),r3.get(1),r4.get(2),r5.get(2)}));
+            l.add(new Array<>(new Badge[]{r1.get(2),r2.get(2),r3.get(1),r4.get(0),r5.get(0)}));
             for (int i=0;i<l.size;i++){
-                float currentCost = getCost(l.get(i));
+                float currentCost = getCostAndAddRespin(l.get(i));
                 if (currentCost > 0) {
-                    for (int k=0;k<l.get(i).size;k++)
-                        if (/*!l.get(i).get(k).isAnimate()&&*/
-                                (l.get(i).get(k).getBadgeType()==findFirstBadgeType(l.get(i))||
-                                        l.get(i).get(k).getBadgeType()==BadgeType.LADY))
+                    for (int k=0;k<l.get(i).size;k++){
+                        if ((l.get(i).get(k).getBadgeType()==findFirstBadgeType(l.get(i))||
+                                l.get(i).get(k).getBadgeType()==BadgeType.LADY))
                             l.get(i).get(k).startAnimation();
+                        else break;
+                    }
                     lineService.show(i);
                     cost+=currentCost;
                 }
             }
+
+            if (respinCount>0){
+                respinCount--;
+                spin(true);
+                return;
+            }
+
+
             bet.setWin(cost);
+            cost=0;
             bet.setLock(false);
         }
 
     }
 
 
-    private float getCost(Array<Badge> badges){
+    private float getCostAndAddRespin(Array<Badge> badges){
         BadgeType badgeType=findFirstBadgeType(badges);
         int i=badgeCount(badgeType,badges);
         float s=0;
@@ -103,9 +114,16 @@ public class Field extends Group implements ResultChecker{
                 case LADY:
                     return 6;
                 case SWORD:
-                    if(i==3)s=0.5f;
-                    else if (i==4) s=1f;
-                    else if (i==5) s=2f;
+                    if(i==3) {
+                        s = 0.5f;
+                        respinCount+=1;
+                    }else if (i==4){
+                        s=1f;
+                        respinCount+=2;
+                    }else if (i==5){
+                        s=2f;
+                        respinCount+=3;
+                    }
                     return s;
                 case DED:
                     if(i==3)s=2f;
@@ -142,11 +160,12 @@ public class Field extends Group implements ResultChecker{
         }
         return BadgeType.LADY;
     }
-
     private int badgeCount(BadgeType badgeType,Array<Badge> badges){
         int i=0;
         for (Badge badge:badges){
-            if (badge.getBadgeType()==badgeType||badge.getBadgeType()==BadgeType.LADY)i++;
+            if (badge.getBadgeType()==badgeType||badge.getBadgeType()==BadgeType.LADY)
+                i++;
+            else return i;
         }
         return i;
     }

@@ -31,8 +31,8 @@ public class GameStage extends Stage implements ButtonReaction {
 
     @Override
     public void spin() {
-        bet.spin();
-        field.spin();
+
+        field.spin(false);
     }
 
     @Override

@@ -6,17 +6,14 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Align;
 
-import java.nio.file.StandardCopyOption;
-
 public class Bet extends Actor {
 
-    private Money money;
-    private Win win;
+    private final Money money;
+    private final Win win;
     private Integer score=100;
     private Integer increasePart=0;
-    private long time=0;
     private final GlyphLayout layout;
-    private int y;
+    private final int y;
     private boolean lock=false;
 
     public Bet(Money money,Win win){
@@ -46,20 +43,21 @@ public class Bet extends Actor {
             this.increasePart+=increasePart;
     }
 
-    public int getScore() {
-        return score;
-    }
-
     public void setWin(float cost){
         win.setWin(score*cost);
+        layout.setText(FontService.getFont(),String.valueOf(score),Color.valueOf("#ffffff"),360, Align.center,false);
     }
 
     public void setLock(boolean lock) {
         this.lock = lock;
     }
 
-    public void spin(){
-        money.increase(-score);
-        if(money.getScore()<score)score=money.getScore();
+    public void spin(boolean respin){
+        if (!respin){
+            money.increase(-score);
+            if(money.getScore()<score)score=money.getScore();
+            setWin(0);
+            setLock(true);
+        }
     }
 }
