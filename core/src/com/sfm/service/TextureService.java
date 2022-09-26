@@ -1,9 +1,10 @@
-package com.sfm;
+package com.sfm.service;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import com.sfm.entity.BadgeType;
 
 import java.util.HashMap;
 import java.util.Map;

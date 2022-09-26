@@ -1,4 +1,4 @@
-package com.sfm;
+package com.sfm.entity;
 
 public interface ResultChecker {
     void finishedSpin();

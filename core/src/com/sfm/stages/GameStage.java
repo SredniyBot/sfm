@@ -1,30 +1,25 @@
-package com.sfm;
+package com.sfm.stages;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
+import com.sfm.entity.money.MoneyTracker;
+import com.sfm.grounds.BackgroundRam;
+import com.sfm.entity.Field;
+import com.sfm.grounds.TopGround;
 public class GameStage extends Stage implements ButtonReaction {
 
-    private Field field;
-    private Bet bet;
-    private Money money;
-    private Win win;
+    private final Field field;
+
+    private final MoneyTracker moneyTracker;
     public GameStage(Viewport viewport) {
         setViewport(viewport);
-
-        money=new Money();
-        win=new Win(money);
-        bet=new Bet(money,win);
-        field = new Field(bet);
+        moneyTracker=new MoneyTracker();
+        field = new Field(moneyTracker);
 
         addActor(new BackgroundRam());
         addActor(field);
         addActor(new TopGround());
-        addActor(bet);
-        addActor(money);
-        addActor(win);
+        addActor(moneyTracker);
         addActor(new ButtonHandler(viewport,this));
     }
 
@@ -37,6 +32,6 @@ public class GameStage extends Stage implements ButtonReaction {
 
     @Override
     public void increaseBet(int inc) {
-        bet.increaseBet(inc);
+        moneyTracker.increaseBet(inc);
     }
 }

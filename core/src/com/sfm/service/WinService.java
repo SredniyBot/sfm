@@ -1,7 +1,10 @@
-package com.sfm;
+package com.sfm.service;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
+import com.sfm.entity.Line;
+import com.sfm.entity.Respin;
+import com.sfm.SacuraFortune;
 
 
 public class WinService extends Group {
@@ -10,10 +13,10 @@ public class WinService extends Group {
     private final Array<Respin> respins;
 
 
-    WinService(){
+    public WinService(){
         lines=new Array<>();
         respins=new Array<>();
-        lines.add(new Line(0,156,(int)SacuraFortune.SCREEN_HEIGHT-512-55));
+        lines.add(new Line(0,156,(int) SacuraFortune.SCREEN_HEIGHT-512-55));
         lines.add(new Line(1,108,(int)SacuraFortune.SCREEN_HEIGHT-169-177));
         lines.add(new Line(2,108,(int)SacuraFortune.SCREEN_HEIGHT-726-177));
         lines.add(new Line(3,138,(int)SacuraFortune.SCREEN_HEIGHT-151-777));

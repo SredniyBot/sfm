@@ -1,25 +1,27 @@
-package com.sfm;
+package com.sfm.entity.money;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Align;
+import com.sfm.service.FontService;
+import com.sfm.SacuraFortune;
 
-public class Win extends Actor {
-
-    private Money money;
-    private Integer score=0;
+class Win extends Actor {
+    private Integer win =0;
     private Integer increasePart=0;
     private long time=0;
     private final GlyphLayout layout;
-    private int y;
+    private final int y;
 
-    public Win(Money money){
-        this.money=money;
+    private int prevWin=0;
+    public WinListener winListener;
+    public Win(WinListener winListener){
+        this.winListener=winListener;
         this.y=(int) (SacuraFortune.SCREEN_HEIGHT-952-60);
         layout = new GlyphLayout();
-        layout.setText(FontService.getFont(),String.valueOf(score), Color.valueOf("#ffffff"),360, Align.center,false);
+        updateWinText();
     }
 
     @Override
@@ -33,25 +35,36 @@ public class Win extends Actor {
             if (System.currentTimeMillis() - time > 20) {
                 time = System.currentTimeMillis();
                 if (increasePart>10){
-                    score += increasePart / 10;
+                    win += increasePart / 10;
                     increasePart -= increasePart / 10;
                 }else {
-                    score++;
+                    win++;
                     increasePart--;
                 }
 
                 if (increasePart <= 0) {
-                    money.increase(score);
+                    increasePart=0;
+                    winListener.win(win-prevWin);
+                    prevWin=win;
                 }
-                layout.setText(FontService.getFont(), String.valueOf(score), Color.valueOf("#ffffff"), 360, Align.center, false);
+                updateWinText();
             }
         }
     }
 
 
-    public void setWin(float v) {
-        score=0;
-        layout.setText(FontService.getFont(),String.valueOf(score),Color.valueOf("#ffffff"),360, Align.center,false);
-        increasePart= Math.round(v);
+    public void addWin(float v) {
+        increasePart+= Math.round(v);
+    }
+
+    private void updateWinText(){
+        layout.setText(FontService.getFont(),String.valueOf(win),Color.valueOf("#ffffff"),360, Align.center,false);
+    }
+
+    public void renew() {
+        prevWin=0;
+        win=0;
+        increasePart=0;
+        updateWinText();
     }
 }

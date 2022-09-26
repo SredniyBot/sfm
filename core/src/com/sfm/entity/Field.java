@@ -1,11 +1,13 @@
-package com.sfm;
+package com.sfm.entity;
 
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
+import com.sfm.entity.money.MoneyTracker;
+import com.sfm.service.WinService;
 
 
-public class Field extends Group implements ResultChecker{
+public class Field extends Group implements ResultChecker {
 
     private final Column c1=new Column(269, 0,this);
     private final Column c2=new Column(547, 0,this);
@@ -15,14 +17,14 @@ public class Field extends Group implements ResultChecker{
     private final WinService winService =new WinService();
 
     private boolean startingRespin=false;
+    private boolean endRespin=false;
     private float backTimer=0;
     private int finishCount=0;
-    private float cost=0;
     private int respinCount=0;
-    private final Bet bet;
+    private final MoneyTracker moneyTracker;
 
-    Field(Bet bet){
-        this.bet=bet;
+    public Field(MoneyTracker moneyTracker){
+        this.moneyTracker=moneyTracker;
         addActor(c5);
         addActor(c4);
         addActor(c3);
@@ -33,7 +35,7 @@ public class Field extends Group implements ResultChecker{
 
     public void spin(boolean respin) {
         if (c1.isSpinning() && c2.isSpinning() && c3.isSpinning() && c4.isSpinning() && c5.isSpinning()){
-            bet.spin(respin);
+            moneyTracker.startSpin();
             c1.spinTo(30);
             c2.spinTo(45);
             c3.spinTo(60);
@@ -79,6 +81,7 @@ public class Field extends Group implements ResultChecker{
             l.add(new Array<>(new Badge[]{r1.get(0),r2.get(0),r3.get(1),r4.get(2),r5.get(2)}));
             l.add(new Array<>(new Badge[]{r1.get(2),r2.get(2),r3.get(1),r4.get(0),r5.get(0)}));
             int currentRespins=0;
+            float cost=0;
             for (int i=0;i<l.size;i++){
                 float currentCost = getCost(l.get(i));
                 int cr=getRespins(l.get(i));
@@ -86,7 +89,7 @@ public class Field extends Group implements ResultChecker{
                 if (currentCost > 0) {
                     for (int k=0;k<l.get(i).size;k++){
                         if (l.get(i).get(k).getBadgeType()==findFirstBadgeType(l.get(i))||
-                                l.get(i).get(k).getBadgeType()==BadgeType.LADY){
+                                l.get(i).get(k).getBadgeType()== BadgeType.LADY){
                             l.get(i).get(k).startAnimation();
                         }
                         else break;
@@ -100,18 +103,14 @@ public class Field extends Group implements ResultChecker{
                 winService.showRespin(currentRespins);
             }
             respinCount+=currentRespins;
-
+            if (cost>0) moneyTracker.win(cost);
             if (respinCount>0){
                 respinCount--;
                 startingRespin=true;
-                backTimer=2;
+                backTimer=1;
                 return;
             }
-
-
-            bet.setWin(cost);
-            cost=0;
-            bet.setLock(false);
+            moneyTracker.endSpin();
         }
 
     }
@@ -190,6 +189,12 @@ public class Field extends Group implements ResultChecker{
                 spin(true);
             }
         }
+//        if(endRespin&&backTimer<=0){
+//            if (winService.isReady()) {
+//                endRespin=true;
+//                moneyTracker.endSpin();
+//            }
+//        }
     }
 
     private BadgeType findFirstBadgeType(Array<Badge> badges){

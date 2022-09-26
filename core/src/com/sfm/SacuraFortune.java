@@ -1,11 +1,7 @@
 package com.sfm;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.sfm.stages.MainScreen;
 
 public class SacuraFortune extends Game {
 	public static final float SCREEN_WIDTH = 1920f;

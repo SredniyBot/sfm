@@ -1,10 +1,15 @@
-package com.sfm;
+package com.sfm.stages;
 
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.sfm.SacuraFortune;
+import com.sfm.entity.Button;
+import com.sfm.entity.HoldButton;
+import com.sfm.service.TextureService;
+import com.sfm.stages.ButtonReaction;
 
 public class ButtonHandler extends Group {
 
@@ -23,7 +28,7 @@ public class ButtonHandler extends Group {
 
             @Override
             public Rectangle getRectangle() {
-                return new Rectangle(1348,SacuraFortune.SCREEN_HEIGHT-953-127,309,127);
+                return new Rectangle(1348, SacuraFortune.SCREEN_HEIGHT-953-127,309,127);
             }
         });
         addActor(new Button(viewport) {

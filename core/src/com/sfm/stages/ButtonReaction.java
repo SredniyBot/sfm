@@ -1,4 +1,4 @@
-package com.sfm;
+package com.sfm.stages;
 
 public interface ButtonReaction {
 

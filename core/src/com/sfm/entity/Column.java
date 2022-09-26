@@ -1,13 +1,14 @@
-package com.sfm;
+package com.sfm.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 
+
 import java.util.Comparator;
 
 
-public class Column extends Group implements Rotator {
+public class Column extends Group {
 
     private Array<Badge> badges;
 
@@ -18,7 +19,7 @@ public class Column extends Group implements Rotator {
     private final int sizeOfBadge = 255;
     private float v;
 
-    Column(int x, float v,ResultChecker resultChecker) {
+    public Column(int x, float v, ResultChecker resultChecker) {
         this.v = v;
         this.resultChecker = resultChecker;
         spinMoment=SpinMoment.STOP;
@@ -203,11 +204,6 @@ public class Column extends Group implements Rotator {
         spinMoment=SpinMoment.START;
     }
 
-
-    @Override
-    public float getYBias() {
-        return 0;
-    }
 
     public enum SpinMoment {
         STOP,

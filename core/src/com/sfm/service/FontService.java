@@ -1,4 +1,4 @@
-package com.sfm;
+package com.sfm.service;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
