@@ -24,7 +24,6 @@ public class MoneyTracker extends Group  implements WinListener, ButtonActivator
         locked=true;
         win.renew();
         money.addMoney(-bet.getBet());
-        if (bet.getBet()>money.getScore())bet.setBet(money.getScore());
 
     }
 
@@ -46,6 +45,7 @@ public class MoneyTracker extends Group  implements WinListener, ButtonActivator
     }
 
     public void endSpin() {
+        if (bet.getBet()>money.getScore())bet.setBet(money.getScore());
         locked=false;
     }
 
