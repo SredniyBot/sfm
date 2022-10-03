@@ -4,18 +4,24 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.entity.Background;
+import com.sfm.entity.ButtonActivator;
+import com.sfm.entity.money.MoneyTracker;
 import com.sfm.service.TextureService;
 
-public class BackStage extends Stage  {
+public class ButtonStage extends Stage {
 
-     BackStage(Viewport viewport) {
+    ButtonStage(Viewport viewport, MoneyTracker moneyTracker, ButtonReaction buttonReaction, ButtonActivator buttonActivator) {
         setViewport(viewport);
         addActor(new Background() {
             @Override
             public TextureRegion getTextureRegion() {
-                return TextureService.getBgTexture();
+                return TextureService.getButtonsTexture();
             }
         });
+        addActor(moneyTracker);
+        addActor(new ButtonHandler(viewport,buttonReaction,buttonActivator));
+
     }
+
 
 }

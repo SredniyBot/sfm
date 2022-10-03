@@ -6,16 +6,18 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.entity.Background;
 import com.sfm.service.TextureService;
 
-public class BackStage extends Stage  {
+public class TopStage extends Stage {
 
-     BackStage(Viewport viewport) {
+
+    TopStage(Viewport viewport) {
         setViewport(viewport);
         addActor(new Background() {
             @Override
             public TextureRegion getTextureRegion() {
-                return TextureService.getBgTexture();
+                return TextureService.getTgTexture();
             }
         });
     }
+
 
 }

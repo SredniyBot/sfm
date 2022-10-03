@@ -17,9 +17,10 @@ public class MainScreen implements Screen {
     private final OrthographicCamera mCamera;
     private final Viewport mViewport;
     private final Viewport backViewport;
-    private Stage mActiveStage;
     private GameStage gameStage;
     private BackStage backStage;
+    private TopStage topStage;
+    private ButtonStage buttonStage;
 
     public MainScreen() {
         TextureService.init();
@@ -29,8 +30,9 @@ public class MainScreen implements Screen {
         mViewport = new FitViewport(SacuraFortune.SCREEN_WIDTH, SacuraFortune.SCREEN_HEIGHT, mCamera);
 
         backStage=new BackStage(backViewport);
+        topStage=new TopStage(backViewport);
         gameStage=new GameStage(mViewport);
-        mActiveStage = gameStage;
+        buttonStage=new ButtonStage(mViewport,gameStage.getMoneyTracker(),gameStage,gameStage.getMoneyTracker());
     }
 
 
@@ -47,22 +49,27 @@ public class MainScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         backViewport.apply();
-        backStage.act(delta);
         backStage.draw();
 
         mViewport.apply();
-        mActiveStage.act(delta);
-        mActiveStage.draw();
+        gameStage.act(delta);
+        gameStage.draw();
+
+        backViewport.apply();
+        topStage.draw();
+
+        mViewport.apply();
+        buttonStage.act(delta);
+        buttonStage.draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
         backViewport.update(width, height, true);
-//        backViewport.setScreenWidth(backViewport.getScreenWidth()*height/backViewport.getScreenHeight());
+        backViewport.setScreenWidth(backViewport.getScreenWidth()*height/backViewport.getScreenHeight());
         mViewport.update(width, height, true);
-//        mViewport.setScreenWidth(mViewport.getScreenWidth()*height/mViewport.getScreenHeight());
-        backViewport.update(width, height, true);
+        mViewport.setScreenWidth(mViewport.getScreenWidth()*height/mViewport.getScreenHeight());
 
     }
 
@@ -84,7 +91,10 @@ public class MainScreen implements Screen {
 
     @Override
     public void dispose() {
-        mActiveStage.dispose();
+        gameStage.dispose();
+        topStage.dispose();
+        backStage.dispose();
+        buttonStage.dispose();
         TextureService.dispose();
     }
 }

@@ -7,15 +7,26 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.SacuraFortune;
 import com.sfm.entity.Button;
+import com.sfm.entity.ButtonActivator;
 import com.sfm.entity.HoldButton;
+import com.sfm.entity.InactiveButton;
 import com.sfm.service.TextureService;
-import com.sfm.stages.ButtonReaction;
 
 public class ButtonHandler extends Group {
 
 
-    ButtonHandler(Viewport viewport, final ButtonReaction buttonReaction){
-        addActor(new Button(viewport) {
+    ButtonHandler(Viewport viewport, final ButtonReaction buttonReaction, final ButtonActivator buttonActivator){
+        addActor(new InactiveButton(viewport) {
+            @Override
+            public TextureRegion getInactiveTextureRegion() {
+                return TextureService.getSpinDisTexture();
+            }
+
+            @Override
+            public boolean isActive() {
+                return buttonActivator.isSpinActive();
+            }
+
             @Override
             public void action() {
                 buttonReaction.spin();
@@ -47,7 +58,17 @@ public class ButtonHandler extends Group {
                 return new Rectangle(1113,SacuraFortune.SCREEN_HEIGHT-118,415,118);
             }
         });
-        addActor(new Button(viewport) {
+        addActor(new InactiveButton(viewport) {
+            @Override
+            public TextureRegion getInactiveTextureRegion() {
+                return TextureService.getAutoDisTexture();
+            }
+
+            @Override
+            public boolean isActive() {
+                return buttonActivator.isAutoActive();
+            }
+
             @Override
             public void action() {
                 System.out.println("Auto");

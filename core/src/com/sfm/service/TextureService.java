@@ -26,13 +26,16 @@ public class TextureService {
     public static void init(){
         dispose();
         assetManager=new AssetManager();
-        assetManager.load("back.png",Texture.class);
+        assetManager.load("autoNotActive.png",Texture.class);
+        assetManager.load("frames.png",Texture.class);
+        assetManager.load("autoOn.png",Texture.class);
+        assetManager.load("background.png",Texture.class);
+        assetManager.load("buttons.png",Texture.class);
         assetManager.load("real.png",Texture.class);
-        assetManager.load("auto.png",Texture.class);
-        assetManager.load("bg.png",Texture.class);
-        assetManager.load("ramka.png",Texture.class);
-        assetManager.load("bgtogether2.png",Texture.class);
-        assetManager.load("tg.png",Texture.class);
+        assetManager.load("spinNotActive.png",Texture.class);
+        assetManager.load("spinOn.png",Texture.class);
+        assetManager.load("topground.png",Texture.class);
+        assetManager.load("supBackground.png",Texture.class);
 
         for (int i=1;i<=3;i++){
             assetManager.load("respin/"+i+".png",Texture.class);
@@ -106,12 +109,16 @@ public class TextureService {
     }
     public static Map<String ,TextureRegion> fillTextureRegionMap(){
         Map<String,TextureRegion> res=new HashMap<>();
-        res.put("bg",new TextureRegion(assetManager.<Texture>get("bg.png"),0,0,1920,1080));
-        res.put("ramka",new TextureRegion(assetManager.<Texture>get("ramka.png"),0,0,1920,1080));
-        res.put("tg",new TextureRegion(assetManager.<Texture>get("bgtogether2.png"),0,0,1920,1080));
-        res.put("tg2",new TextureRegion(assetManager.<Texture>get("tg.png"),0,0,1920,1080));
+        res.put("autoDis",new TextureRegion(assetManager.<Texture>get("autoNotActive.png"),0,0,218,77));
+        res.put("auto",new TextureRegion(assetManager.<Texture>get("autoOn.png"),0,0,218,77));
+        res.put("bg",new TextureRegion(assetManager.<Texture>get("background.png"),0,0,1920,1080));
+        res.put("btns",new TextureRegion(assetManager.<Texture>get("buttons.png"),0,0,1920,1080));
         res.put("real",new TextureRegion(assetManager.<Texture>get("real.png"),0,0,415,118));
-        res.put("auto",new TextureRegion(assetManager.<Texture>get("auto.png"),0,0,218,77));
+        res.put("spinDis",new TextureRegion(assetManager.<Texture>get("spinNotActive.png"),0,0,309,127));
+        res.put("spin",new TextureRegion(assetManager.<Texture>get("spinOn.png"),0,0,309,127));
+        res.put("sbg",new TextureRegion(assetManager.<Texture>get("supBackground.png"),0,0,1920,1080));
+        res.put("tg",new TextureRegion(assetManager.<Texture>get("topground.png"),0,0,1920,1080));
+        res.put("fr",new TextureRegion(assetManager.<Texture>get("frames.png"),0,0,1920,1080));
         return res;
     }
 
@@ -127,8 +134,8 @@ public class TextureService {
     public static TextureRegion getBgTexture(){
         return textureRegionMap.get("bg");
     }
-    public static TextureRegion getRamkaTexture(){
-        return textureRegionMap.get("ramka");
+    public static TextureRegion getButtonsTexture(){
+        return textureRegionMap.get("btns");
     }
     public static TextureRegion getTgTexture(){
         return textureRegionMap.get("tg");
@@ -144,6 +151,9 @@ public class TextureService {
     }
     public static TextureRegion getRealTexture(){
         return textureRegionMap.get("real");
+    }
+    public static TextureRegion getFrameTexture(){
+        return textureRegionMap.get("fr");
     }
 
     public static TextureRegion getBadgeTexture(BadgeType badgeType,int frameNumber){
@@ -167,5 +177,18 @@ public class TextureService {
     public static void dispose() {
         if (assetManager!=null)
             assetManager.dispose();
+    }
+
+    public static TextureRegion getSupBackground() {
+        return textureRegionMap.get("sbg");
+    }
+
+    public static TextureRegion getSpinDisTexture() {
+        return textureRegionMap.get("spinDis");
+    }
+
+    public static TextureRegion getAutoDisTexture() {
+        return textureRegionMap.get("autoDis");
+
     }
 }

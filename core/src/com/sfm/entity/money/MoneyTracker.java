@@ -1,8 +1,9 @@
 package com.sfm.entity.money;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.sfm.entity.ButtonActivator;
 
-public class MoneyTracker extends Group  implements WinListener{
+public class MoneyTracker extends Group  implements WinListener, ButtonActivator {
     private final Bet bet;
     private final Money money;
     private final Win win;
@@ -46,5 +47,15 @@ public class MoneyTracker extends Group  implements WinListener{
 
     public void endSpin() {
         locked=false;
+    }
+
+    @Override
+    public boolean isSpinActive() {
+        return !locked;
+    }
+
+    @Override
+    public boolean isAutoActive() {
+        return !locked;
     }
 }
