@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.sfm.SacuraFortune;
+import com.sfm.main.SacuraFortune;
 import com.sfm.entity.Button;
 import com.sfm.entity.ButtonActivator;
 import com.sfm.entity.HoldButton;

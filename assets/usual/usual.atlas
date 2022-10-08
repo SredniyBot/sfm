@@ -1,0 +1,100 @@
+
+usual.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+auto
+  rotate: false
+  xy: 415, 365
+  size: 218, 77
+  orig: 218, 77
+  offset: 0, 0
+  index: -1
+autoN
+  rotate: false
+  xy: 0, 0
+  size: 218, 77
+  orig: 218, 77
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 0, 442
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+real
+  rotate: false
+  xy: 0, 331
+  size: 415, 111
+  orig: 415, 111
+  offset: 0, 0
+  index: -1
+spin
+  rotate: false
+  xy: 0, 204
+  size: 309, 127
+  orig: 309, 127
+  offset: 0, 0
+  index: -1
+spinN
+  rotate: false
+  xy: 0, 77
+  size: 309, 127
+  orig: 309, 127
+  offset: 0, 0
+  index: -1
+
+usual2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+supBackground
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+usual3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+topground
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+usual4.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+buttons
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+usual5.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+frames
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1

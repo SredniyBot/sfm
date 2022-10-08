@@ -2,6 +2,7 @@ package com.sfm.service;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.sfm.entity.BadgeType;
@@ -25,15 +26,19 @@ public class TextureService {
 
     public static void init(){
         dispose();
+
         assetManager=new AssetManager();
-        assetManager.load("autoNotActive.png",Texture.class);
+        assetManager.load("usual/usual.atlas",TextureAtlas.class);
+        assetManager.load("sword/sword.atlas",TextureAtlas.class);
+
+        assetManager.load("autoN.png",Texture.class);
         assetManager.load("frames.png",Texture.class);
-        assetManager.load("autoOn.png",Texture.class);
+        assetManager.load("auto.png",Texture.class);
         assetManager.load("background.png",Texture.class);
         assetManager.load("buttons.png",Texture.class);
         assetManager.load("real.png",Texture.class);
-        assetManager.load("spinNotActive.png",Texture.class);
-        assetManager.load("spinOn.png",Texture.class);
+        assetManager.load("spinN.png",Texture.class);
+        assetManager.load("spin.png",Texture.class);
         assetManager.load("topground.png",Texture.class);
         assetManager.load("supBackground.png",Texture.class);
 
@@ -63,6 +68,9 @@ public class TextureService {
 
         assetManager.finishLoading();
 
+
+        TextureAtlas atlas = assetManager.get("sword/sword.atlas");
+        TextureRegion textureRegion = atlas.findRegion("sword-0");
         textureRegionMapLady    =getArrayFromAssets(BadgeType.LADY.getNumberOfFrames(),"lady",391,867,11);
         textureRegionMapCoinB   =getArrayFromAssets(BadgeType.COIN_BROWN.getNumberOfFrames(),"coinbronze",322,321,27);
         textureRegionMapCoinG   =getArrayFromAssets(BadgeType.COIN_GREEN.getNumberOfFrames(),"coingreen",322,321,27);

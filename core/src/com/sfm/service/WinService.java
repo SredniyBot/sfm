@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 import com.sfm.entity.Line;
 import com.sfm.entity.Respin;
-import com.sfm.SacuraFortune;
+import com.sfm.main.SacuraFortune;
 
 
 public class WinService extends Group {

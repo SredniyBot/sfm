@@ -1,21 +1,21 @@
-package com.sfm;
+package com.sfm.main;
 
 import com.badlogic.gdx.Game;
 import com.sfm.stages.MainScreen;
+import com.sun.imageio.plugins.gif.GIFImageReader;
+import com.sun.imageio.plugins.gif.GIFImageReaderSpi;
 
-public class SacuraFortune extends Game {
+import sun.awt.image.GifImageDecoder;
+
+public class SacuraFortune extends Game implements ScreenSwitcher{
 	public static final float SCREEN_WIDTH = 1920f;
 	public static final float SCREEN_HEIGHT = 1080f;
 	public static float VIEWPORT_LEFT;
 	public static float VIEWPORT_RIGHT;
 
-	private MainScreen mMainScreen;
-
 	@Override
 	public void create () {
-		mMainScreen = new MainScreen();
-
-		setScreen(mMainScreen);
+		setScreen(new MainScreen());
 	}
 
 	@Override
@@ -37,4 +37,9 @@ public class SacuraFortune extends Game {
 		super.dispose();
 	}
 
+	@Override
+	public void switchScreen(ScreenType screenType) {
+		getScreen().dispose();
+		setScreen(screenType.getScreen());
+	}
 }

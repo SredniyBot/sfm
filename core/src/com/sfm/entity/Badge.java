@@ -2,7 +2,7 @@ package com.sfm.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.sfm.SacuraFortune;
+import com.sfm.main.SacuraFortune;
 import com.sfm.service.TextureService;
 
 public class Badge extends Actor {
