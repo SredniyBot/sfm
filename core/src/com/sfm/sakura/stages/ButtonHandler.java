@@ -6,20 +6,23 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.main.GameInitializer;
+import com.sfm.main.ScreenSwitcher;
+import com.sfm.main.ScreenType;
 import com.sfm.main.abstracts.Button;
 import com.sfm.sakura.entity.ButtonActivator;
 import com.sfm.main.abstracts.HoldButton;
 import com.sfm.main.abstracts.InactiveButton;
+import com.sfm.service.TextureService;
 
 public class ButtonHandler extends Group {
 
     ButtonHandler(Viewport viewport,
                   final ButtonReaction buttonReaction,
-                  final ButtonActivator buttonActivator){
+                  final ButtonActivator buttonActivator, final ScreenSwitcher switchAction){
         addActor(new InactiveButton(viewport) {
             @Override
             public TextureRegion getInactiveTextureRegion() {
-                return TextureService.getSpinDisTexture();
+                return TextureService.getTextureRegion("sakura/usual/usual.atlas","spinN");
             }
 
             @Override
@@ -34,7 +37,7 @@ public class ButtonHandler extends Group {
 
             @Override
             public TextureRegion getTextureRegion() {
-                return TextureService.getSpinTexture();
+                return TextureService.getTextureRegion("sakura/usual/usual.atlas","spin");
             }
 
             @Override
@@ -50,7 +53,7 @@ public class ButtonHandler extends Group {
 
             @Override
             public TextureRegion getTextureRegion() {
-                return TextureService.getRealTexture();
+                return TextureService.getTextureRegion("sakura/usual/usual.atlas","real");
             }
 
             @Override
@@ -61,7 +64,7 @@ public class ButtonHandler extends Group {
         addActor(new InactiveButton(viewport) {
             @Override
             public TextureRegion getInactiveTextureRegion() {
-                return TextureService.getAutoDisTexture();
+                return TextureService.getTextureRegion("sakura/usual/usual.atlas","autoN");
             }
 
             @Override
@@ -76,7 +79,7 @@ public class ButtonHandler extends Group {
 
             @Override
             public TextureRegion getTextureRegion() {
-                return TextureService.getAutoTexture();
+                return TextureService.getTextureRegion("sakura/usual/usual.atlas","auto");
             }
 
             @Override
@@ -119,7 +122,7 @@ public class ButtonHandler extends Group {
         addActor(new Button(viewport) {
             @Override
             public void action() {
-                System.out.println("back");
+                switchAction.switchScreen(ScreenType.MAIN_MENU);
             }
 
             @Override

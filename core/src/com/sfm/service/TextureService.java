@@ -10,7 +10,7 @@ public class TextureService {
 
     private static AssetManager assetManager;
 
-    public void init(List<String> atlasPaths){
+    public static void init(List<String> atlasPaths){
         if (assetManager!=null)assetManager.dispose();
         assetManager=new AssetManager();
         for (String s:atlasPaths){

@@ -2,6 +2,7 @@ package com.sfm.sakura.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.sfm.service.TextureService;
 
 public class Respin extends Actor {
 
@@ -25,7 +26,7 @@ public class Respin extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         if (draws){
-            batch.draw(TextureService.getRespinRegion(id),xp,yp);
+            batch.draw(TextureService.getTextureRegion("respin/respin.atlas",String.valueOf(id+1)),xp,yp);
         }
     }
 

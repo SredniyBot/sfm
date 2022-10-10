@@ -8,6 +8,8 @@ public class MoneyTracker extends Group  implements WinListener, ButtonActivator
     private final Money money;
     private final Win win;
 
+
+
     private boolean locked=false;
     public MoneyTracker(){
         money=new Money();
@@ -17,6 +19,14 @@ public class MoneyTracker extends Group  implements WinListener, ButtonActivator
         addActor(money);
         addActor(bet);
         addActor(win);
+    }
+
+    public void setNX(float x){
+        money.setSX(x);
+    }
+    public void showBet(boolean b){
+        win.setVisible(b);
+        bet.setVisible(b);
     }
 
     public void startSpin(){

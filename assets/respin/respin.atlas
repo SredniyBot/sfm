@@ -1,0 +1,27 @@
+
+respin.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+1
+  rotate: false
+  xy: 0, 0
+  size: 1167, 290
+  orig: 1167, 290
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 0, 290
+  size: 1271, 272
+  orig: 1271, 272
+  offset: 0, 0
+  index: -1
+3
+  rotate: false
+  xy: 0, 562
+  size: 1264, 279
+  orig: 1264, 279
+  offset: 0, 0
+  index: -1

@@ -3,13 +3,13 @@ package com.sfm.sakura.entity;
 import java.util.Random;
 
 public enum BadgeType {
-    LADY        (0,3,45,63,45,0.04f, "atlas", "name"),
-    SWORD       (1,2,25,30,56,0.04f, "atlas", "name"),
-    DED         (2,1,35 ,45 ,36,0.05f, "atlas", "name"),
-    MAN         (3,1,35 ,45 ,36,0.05f, "atlas", "name"),
-    COIN_GRAY   (4,1,27 ,38 ,60,0.05f, "atlas", "name"),
-    COIN_GREEN  (5,1,27 ,38 ,60,0.05f, "atlas", "name"),
-    COIN_BROWN  (6,1,27 ,38 ,60,0.05f, "atlas", "name");
+    LADY        (0,3,45,63,45,0.04f, "sakura/lady/lady.atlas", "lady"),
+    SWORD       (1,2,25,30,56,0.04f, "sakura/sword/sword.atlas", "sword"),
+    DED         (2,1,35 ,45 ,36,0.05f, "sakura/ded/ded.atlas", "ded"),
+    MAN         (3,1,35 ,45 ,36,0.05f, "sakura/man/man.atlas", "man"),
+    COIN_GRAY   (4,1,27 ,38 ,60,0.05f, "sakura/silver/silver.atlas", "silver"),
+    COIN_GREEN  (5,1,27 ,38 ,60,0.05f, "sakura/green/green.atlas", "green"),
+    COIN_BROWN  (6,1,27 ,38 ,60,0.05f, "sakura/bronze/bronse.atlas", "bronse");
 
     private final int size;
     private final int paddingT;
@@ -43,7 +43,7 @@ public enum BadgeType {
     }
 
     public static BadgeType getRandom(){
-        if (new Random().nextInt(3)==0)return SWORD;
+//        if (new Random().nextInt(3)==0)return SWORD;
         if (new Random().nextInt(15)==0)return LADY;
         switch (new Random().nextInt(6)){
             case 0:

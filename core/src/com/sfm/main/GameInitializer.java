@@ -1,7 +1,11 @@
 package com.sfm.main;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
+import com.sfm.main.money.MoneyTracker;
+import com.sfm.menu.MenuScreen;
 import com.sfm.sakura.stages.SakuraScreen;
+import com.sfm.service.FontService;
 
 public class GameInitializer extends Game implements ScreenSwitcher{
 	public static final float SCREEN_WIDTH = 1920f;
@@ -9,9 +13,14 @@ public class GameInitializer extends Game implements ScreenSwitcher{
 	public static float VIEWPORT_LEFT;
 	public static float VIEWPORT_RIGHT;
 
+	private static MoneyTracker moneyTracker;
+	private Screen currentScreen;
 	@Override
 	public void create () {
-		setScreen(new SakuraScreen());
+		FontService.init();
+		moneyTracker = new MoneyTracker();
+		currentScreen=new MenuScreen(this);
+		setScreen(currentScreen);
 	}
 
 	@Override
@@ -35,6 +44,25 @@ public class GameInitializer extends Game implements ScreenSwitcher{
 
 	@Override
 	public void switchScreen(ScreenType screenType) {
-		setScreen(screenType.getScreen());
+		Screen newScreen;
+		switch (screenType){
+			case MAIN_MENU:
+				newScreen=new MenuScreen(this);
+				setScreen(newScreen);
+				currentScreen.dispose();
+				currentScreen=newScreen;
+				break;
+			case SAKURA_FORTUNE:
+				newScreen=new SakuraScreen(this);
+				setScreen(newScreen);
+				currentScreen.dispose();
+				currentScreen=newScreen;
+				break;
+		}
+
+	}
+
+	public static MoneyTracker getMoneyTracker(){
+		return moneyTracker;
 	}
 }

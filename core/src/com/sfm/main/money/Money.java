@@ -12,6 +12,7 @@ class Money extends Actor {
     private Integer score;
     private final GlyphLayout layout;
     private final int y;
+    private float x=380;
 
     public Money(){
         this.y=(int) (GameInitializer.SCREEN_HEIGHT-35);
@@ -21,7 +22,7 @@ class Money extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        FontService.getFont().draw(batch,layout,380,y);
+        FontService.getFont().draw(batch,layout,x,y);
     }
 
 
@@ -43,4 +44,7 @@ class Money extends Actor {
         layout.setText(FontService.getFont(),"€ "+(score),Color.valueOf("#ffffff"),415, Align.center,false);
     }
 
+    public void setSX(float x) {
+        this.x=x;
+    }
 }

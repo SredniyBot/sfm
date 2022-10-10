@@ -1,0 +1,53 @@
+
+usual.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+buttons
+  rotate: false
+  xy: 0, 275
+  size: 1920, 1082
+  orig: 1920, 1082
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 0, 127
+  size: 352, 148
+  orig: 352, 148
+  offset: 0, 0
+  index: -1
+playN
+  rotate: false
+  xy: 0, 0
+  size: 331, 127
+  orig: 331, 127
+  offset: 0, 0
+  index: -1
+
+usual2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+background
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+usual3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+main
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1

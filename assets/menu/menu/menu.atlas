@@ -1,0 +1,47 @@
+
+menu.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+lock
+  rotate: false
+  xy: 727, 28
+  size: 681, 893
+  orig: 681, 893
+  offset: 0, 0
+  index: -1
+ra
+  rotate: false
+  xy: 0, 0
+  size: 727, 944
+  orig: 727, 944
+  offset: 0, 0
+  index: -1
+sakura
+  rotate: false
+  xy: 822, 921
+  size: 700, 948
+  orig: 700, 948
+  offset: 0, 0
+  index: -1
+sakuraL
+  rotate: false
+  xy: 0, 944
+  size: 822, 925
+  orig: 822, 925
+  offset: 0, 0
+  index: -1
+
+menu2.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+raL
+  rotate: false
+  xy: 0, 0
+  size: 681, 893
+  orig: 681, 893
+  offset: 0, 0
+  index: -1

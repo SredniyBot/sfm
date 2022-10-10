@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.main.GameInitializer;
+import com.sfm.main.ScreenSwitcher;
+import com.sfm.main.ScreenType;
 
 public abstract class StretchedScreen implements Screen {
 
@@ -20,8 +22,10 @@ public abstract class StretchedScreen implements Screen {
     private final Stage topgroundStage;
     private final Stage mainStage;
     private final Stage supportStage;
+    private final ScreenSwitcher switchAction;
 
-    public StretchedScreen() {
+    public StretchedScreen(final ScreenSwitcher screenSwitcher){
+        switchAction= screenSwitcher;
         OrthographicCamera mCamera = new OrthographicCamera();
         backViewport = new StretchViewport(GameInitializer.SCREEN_WIDTH, GameInitializer.SCREEN_HEIGHT);
         mViewport = new FitViewport(GameInitializer.SCREEN_WIDTH, GameInitializer.SCREEN_HEIGHT, mCamera);
@@ -32,6 +36,9 @@ public abstract class StretchedScreen implements Screen {
         supportStage=getSupportStage();
     }
 
+    public ScreenSwitcher getSwitchAction() {
+        return switchAction;
+    }
     public abstract void init(Viewport viewport);
     public abstract Stage getMainStage();
     public abstract Stage getSupportStage();
@@ -93,6 +100,8 @@ public abstract class StretchedScreen implements Screen {
         backgroundStage.dispose();
         supportStage.dispose();
     }
+
+
 
     private static class ImageStage extends Stage{
         ImageStage(Viewport viewport, final TextureRegion textureRegion){

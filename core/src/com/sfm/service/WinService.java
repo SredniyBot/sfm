@@ -16,15 +16,15 @@ public class WinService extends Group {
     public WinService(){
         lines=new Array<>();
         respins=new Array<>();
-        lines.add(new Line(0,156,(int) GameInitializer.SCREEN_HEIGHT-512-55));
-        lines.add(new Line(1,108,(int) GameInitializer.SCREEN_HEIGHT-169-177));
-        lines.add(new Line(2,108,(int) GameInitializer.SCREEN_HEIGHT-726-177));
-        lines.add(new Line(3,138,(int) GameInitializer.SCREEN_HEIGHT-151-777));
-        lines.add(new Line(4,143,(int) GameInitializer.SCREEN_HEIGHT-152-769));
-        lines.add(new Line(5,154,(int) GameInitializer.SCREEN_HEIGHT-205-256));
-        lines.add(new Line(6,145,(int) GameInitializer.SCREEN_HEIGHT-615-258));
-        lines.add(new Line(7,135,(int) GameInitializer.SCREEN_HEIGHT-419-329));
-        lines.add(new Line(8,136,(int) GameInitializer.SCREEN_HEIGHT-419-329));
+        lines.add(new Line(1,156,(int) GameInitializer.SCREEN_HEIGHT-512-55));
+        lines.add(new Line(2,108,(int) GameInitializer.SCREEN_HEIGHT-169-177));
+        lines.add(new Line(3,108,(int) GameInitializer.SCREEN_HEIGHT-726-177));
+        lines.add(new Line(4,138,(int) GameInitializer.SCREEN_HEIGHT-151-777));
+        lines.add(new Line(5,143,(int) GameInitializer.SCREEN_HEIGHT-152-769));
+        lines.add(new Line(6,154,(int) GameInitializer.SCREEN_HEIGHT-205-256));
+        lines.add(new Line(7,145,(int) GameInitializer.SCREEN_HEIGHT-615-258));
+        lines.add(new Line(8,135,(int) GameInitializer.SCREEN_HEIGHT-419-329));
+        lines.add(new Line(9,136,(int) GameInitializer.SCREEN_HEIGHT-419-329));
 
         respins.add(new Respin(0,376,(int) GameInitializer.SCREEN_HEIGHT-395-290));
         respins.add(new Respin(1,324,(int) GameInitializer.SCREEN_HEIGHT-272-404));

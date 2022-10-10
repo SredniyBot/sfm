@@ -26,14 +26,13 @@ public class Line extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         if (draws){
-            batch.draw(TextureService.getLineRegion(id),xp,yp);
+            batch.draw(TextureService.getTextureRegion("lines/lines.atlas",String.valueOf(id)),xp,yp);
         }
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-
         if (draws){
             time+=delta;
             if (time>3){
@@ -41,7 +40,6 @@ public class Line extends Actor {
                 time=0;
             }
         }
-
     }
 
     public boolean isDrawing() {
