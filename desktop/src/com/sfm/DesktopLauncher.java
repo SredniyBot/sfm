@@ -2,7 +2,8 @@ package com.sfm;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.sfm.main.SacuraFortune;
+import com.sfm.main.GameInitializer;
+
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -13,6 +14,6 @@ public class DesktopLauncher {
 
 
 		config.setTitle("Sacura Fortune mobile");
-		new Lwjgl3Application(new SacuraFortune(), config);
+		new Lwjgl3Application(new GameInitializer(), config);
 	}
 }

@@ -7,7 +7,7 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.backends.android.AndroidAudio;
 import com.badlogic.gdx.backends.android.AsynchronousAndroidAudio;
-import com.sfm.main.SacuraFortune;
+import com.sfm.main.GameInitializer;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -18,7 +18,7 @@ public class AndroidLauncher extends AndroidApplication {
 		config.useAccelerometer=false;
 		config.useCompass=false;
 		config.useImmersiveMode = true;
-		initialize(new SacuraFortune(), config);
+		initialize(new GameInitializer(), config);
 	}
 
 	@Override
