@@ -18,11 +18,11 @@ public class PlayButton extends Actor {
     private XGettter xGettter;
 
 
-    public PlayButton(Viewport viewport, Runnable action, String texture, float biasX, float v, int i, int i1, XGettter xGettter){
+    public PlayButton(Viewport viewport, Runnable action, String texture, float biasX, float y, int w, int h, XGettter xGettter){
         setX(biasX);
-        setY(v);
-        setWidth(i);
-        setHeight(i1);
+        setY(y);
+        setWidth(w);
+        setHeight(h);
         this.xGettter=xGettter;
         this.viewport=viewport;
         this.action=action;

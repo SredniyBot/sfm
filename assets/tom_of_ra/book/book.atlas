@@ -1,0 +1,237 @@
+
+book.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+book-0
+  rotate: false
+  xy: 0, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-1
+  rotate: false
+  xy: 0, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-10
+  rotate: false
+  xy: 256, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-11
+  rotate: false
+  xy: 256, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-12
+  rotate: false
+  xy: 768, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-13
+  rotate: false
+  xy: 256, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-14
+  rotate: false
+  xy: 768, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-15
+  rotate: false
+  xy: 1024, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-16
+  rotate: false
+  xy: 0, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-17
+  rotate: false
+  xy: 1280, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-18
+  rotate: false
+  xy: 1024, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-19
+  rotate: false
+  xy: 0, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-2
+  rotate: false
+  xy: 512, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-20
+  rotate: false
+  xy: 256, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-21
+  rotate: false
+  xy: 768, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-22
+  rotate: false
+  xy: 256, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-23
+  rotate: false
+  xy: 512, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-24
+  rotate: false
+  xy: 512, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-25
+  rotate: false
+  xy: 1024, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-26
+  rotate: false
+  xy: 512, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-27
+  rotate: false
+  xy: 1024, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-28
+  rotate: false
+  xy: 1280, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-29
+  rotate: false
+  xy: 256, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-3
+  rotate: false
+  xy: 1792, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-30
+  rotate: false
+  xy: 1536, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-31
+  rotate: false
+  xy: 768, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-32
+  rotate: false
+  xy: 256, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-4
+  rotate: false
+  xy: 0, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-5
+  rotate: false
+  xy: 0, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-6
+  rotate: false
+  xy: 512, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-7
+  rotate: false
+  xy: 0, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-8
+  rotate: false
+  xy: 512, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+book-9
+  rotate: false
+  xy: 768, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

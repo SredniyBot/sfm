@@ -1,0 +1,237 @@
+
+bird.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+bird-0
+  rotate: false
+  xy: 1280, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-1
+  rotate: false
+  xy: 0, 512
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-10
+  rotate: false
+  xy: 768, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-11
+  rotate: false
+  xy: 256, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-12
+  rotate: false
+  xy: 512, 1024
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-13
+  rotate: false
+  xy: 512, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-14
+  rotate: false
+  xy: 768, 1024
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-15
+  rotate: false
+  xy: 768, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-16
+  rotate: false
+  xy: 0, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-17
+  rotate: false
+  xy: 0, 256
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-18
+  rotate: false
+  xy: 256, 1280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-19
+  rotate: false
+  xy: 1792, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-2
+  rotate: false
+  xy: 256, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-20
+  rotate: false
+  xy: 256, 768
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-21
+  rotate: false
+  xy: 0, 1280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-22
+  rotate: false
+  xy: 256, 512
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-23
+  rotate: false
+  xy: 0, 768
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-24
+  rotate: false
+  xy: 512, 512
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-25
+  rotate: false
+  xy: 768, 1280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-26
+  rotate: false
+  xy: 0, 1024
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-27
+  rotate: false
+  xy: 1024, 1280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-28
+  rotate: false
+  xy: 1024, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-29
+  rotate: false
+  xy: 0, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-3
+  rotate: false
+  xy: 0, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-30
+  rotate: false
+  xy: 1280, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-31
+  rotate: false
+  xy: 512, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-32
+  rotate: false
+  xy: 1536, 1792
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-4
+  rotate: false
+  xy: 256, 1024
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-5
+  rotate: false
+  xy: 256, 256
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-6
+  rotate: false
+  xy: 1024, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-7
+  rotate: false
+  xy: 256, 1536
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-8
+  rotate: false
+  xy: 512, 768
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+bird-9
+  rotate: false
+  xy: 512, 1280
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

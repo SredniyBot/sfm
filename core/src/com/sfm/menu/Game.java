@@ -5,11 +5,12 @@ import com.sfm.main.ScreenSwitcher;
 import com.sfm.main.ScreenType;
 
 public enum Game {
-    SAKURA("sakura", ScreenType.SAKURA_FORTUNE, true, 153),
-    SAKURA1("sakura", ScreenType.SAKURA_FORTUNE, true, 153),
-    TOME_OF_RA("ra", ScreenType.MAIN_MENU, true, 187),
-    TOME_OF_RA1("ra", ScreenType.MAIN_MENU, true, 187),
-    SAKURA2("sakura", ScreenType.SAKURA_FORTUNE, true, 153);
+    SAKURA("sakura", ScreenType.SAKURA_FORTUNE, true, 165),
+    SAKURA1("sakura", ScreenType.SAKURA_FORTUNE, true, 165),
+    TOME_OF_RA("ra", ScreenType.MAIN_MENU, true, 165),
+    TOME_OF_RA1("ra", ScreenType.MAIN_MENU, true, 165),
+    SAKURA2("sakura", ScreenType.SAKURA_FORTUNE, true, 165),
+    SAKURA3("lock", ScreenType.SAKURA_FORTUNE, false, 165);
     private final String texture;
     private final ScreenType screenType;
     private boolean opened;

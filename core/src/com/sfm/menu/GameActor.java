@@ -16,12 +16,13 @@ public class GameActor extends Group implements XGettter{
         setY(y);
         this.game=game;
         this.xGettter=xGettter;
-        addActor(new PlayButton(viewport, new Runnable() {
+        if (game.isOpened())
+            addActor(new PlayButton(viewport, new Runnable() {
             @Override
             public void run() {
-                runnable.switchScreen(game.getScreenType());
-            }
-        }, game.getTexture(),game.getBiasX(),275-148f,331,127,this));
+                   runnable.switchScreen(game.getScreenType());
+                }
+        }, game.getTexture(),game.getBiasX(),323-105f,331,127,this));
     }
 
     @Override
