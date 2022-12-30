@@ -1,0 +1,20 @@
+
+util.png
+size: 2048, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+coin
+  rotate: false
+  xy: 1427, 0
+  size: 117, 116
+  orig: 117, 116
+  offset: 0, 0
+  index: -1
+text
+  rotate: false
+  xy: 0, 71
+  size: 1427, 45
+  orig: 1427, 45
+  offset: 0, 0
+  index: -1

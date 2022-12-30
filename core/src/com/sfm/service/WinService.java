@@ -2,8 +2,7 @@ package com.sfm.service;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
-import com.sfm.sakura.entity.Line;
-import com.sfm.sakura.entity.Respin;
+import com.sfm.main.game_utils.Respin;
 import com.sfm.main.GameInitializer;
 
 
@@ -29,6 +28,7 @@ public class WinService extends Group {
         respins.add(new Respin(0,376,(int) GameInitializer.SCREEN_HEIGHT-395-290));
         respins.add(new Respin(1,324,(int) GameInitializer.SCREEN_HEIGHT-272-404));
         respins.add(new Respin(2,328,(int) GameInitializer.SCREEN_HEIGHT-400-279));
+        respins.add(new Respin(3,328,(int) GameInitializer.SCREEN_HEIGHT-400-279));
 
         for (Line line:lines)addActor(line);
         for (Respin respin:respins)addActor(respin);

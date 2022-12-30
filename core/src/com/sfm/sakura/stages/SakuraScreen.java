@@ -4,7 +4,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.main.ScreenSwitcher;
+import com.sfm.main.abstracts.ButtonStage;
 import com.sfm.main.abstracts.StretchedScreen;
+import com.sfm.main.game_utils.Respin;
 import com.sfm.service.FontService;
 import com.sfm.service.TextureService;
 
@@ -13,7 +15,7 @@ import java.util.List;
 
 public class SakuraScreen extends StretchedScreen {
 
-    private GameStage gameStage;
+    private SakuraStage gameStage;
     private ButtonStage supportStage;
 
     public SakuraScreen(ScreenSwitcher screenSwitcher) {
@@ -22,21 +24,8 @@ public class SakuraScreen extends StretchedScreen {
 
     @Override
     public void init(Viewport viewport) {
-        List<String> textures = new ArrayList<>();
-        textures.add("sakura/bronze/bronse.atlas");
-        textures.add("sakura/ded/ded.atlas");
-        textures.add("sakura/green/green.atlas");
-        textures.add("sakura/lady/lady.atlas");
-        textures.add("lines/lines.atlas");
-        textures.add("sakura/man/man.atlas");
-        textures.add("respin/respin.atlas");
-        textures.add("sakura/silver/silver.atlas");
-        textures.add("sakura/sword/sword.atlas");
-        textures.add("sakura/usual/usual.atlas");
-        TextureService.init(textures);
-        FontService.init();
-        gameStage=new GameStage(viewport);
-        supportStage=new ButtonStage(viewport,gameStage.getMoneyTracker(),gameStage,gameStage.getMoneyTracker(),getSwitchAction());
+        gameStage=new SakuraStage(viewport);
+        supportStage=new ButtonStage(viewport, gameStage.getButtonGuardian(), getSwitchAction());
     }
 
     @Override

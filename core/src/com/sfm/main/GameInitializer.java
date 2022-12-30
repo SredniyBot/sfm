@@ -1,26 +1,37 @@
 package com.sfm.main;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
-import com.sfm.main.money.MoneyTracker;
-import com.sfm.menu.MenuScreen;
-import com.sfm.sakura.stages.SakuraScreen;
-import com.sfm.service.FontService;
 
-public class GameInitializer extends Game implements ScreenSwitcher{
+import com.sfm.loader.LoaderScreen;
+import com.sfm.service.FontService;
+import com.sfm.service.MusicService;
+import com.sfm.service.SoundService;
+
+public class GameInitializer extends Game implements ScreenSetter{
+
 	public static final float SCREEN_WIDTH = 1920f;
 	public static final float SCREEN_HEIGHT = 1080f;
 	public static float VIEWPORT_LEFT;
 	public static float VIEWPORT_RIGHT;
+	public static AndroidInterfaces androidInterfaces;
+	private LoaderScreen loaderScreen;
 
-	private static MoneyTracker moneyTracker;
-	private Screen currentScreen;
+	public GameInitializer(AndroidInterfaces androidInterfaces){
+		GameInitializer.androidInterfaces=androidInterfaces;
+	}
+
 	@Override
 	public void create () {
 		FontService.init();
-		moneyTracker = new MoneyTracker();
-		currentScreen=new MenuScreen(this);
-		setScreen(currentScreen);
+		SoundService.init();
+		loaderScreen=new LoaderScreen(new ScreenSwitcher() {
+			@Override
+			public void switchScreen(ScreenType screenType) {
+
+			}
+		});
+		loaderScreen.setScreenSetter(this);
+		loaderScreen.switchScreen(ScreenType.MAIN_MENU);
 	}
 
 	@Override
@@ -39,30 +50,11 @@ public class GameInitializer extends Game implements ScreenSwitcher{
 
 	@Override
 	public void dispose() {
+		loaderScreen.dispose();
+		SoundService.dispose();
+		MusicService.dispose();
 		super.dispose();
 	}
 
-	@Override
-	public void switchScreen(ScreenType screenType) {
-		Screen newScreen;
-		switch (screenType){
-			case MAIN_MENU:
-				newScreen=new MenuScreen(this);
-				setScreen(newScreen);
-				currentScreen.dispose();
-				currentScreen=newScreen;
-				break;
-			case SAKURA_FORTUNE:
-				newScreen=new SakuraScreen(this);
-				setScreen(newScreen);
-				currentScreen.dispose();
-				currentScreen=newScreen;
-				break;
-		}
 
-	}
-
-	public static MoneyTracker getMoneyTracker(){
-		return moneyTracker;
-	}
 }

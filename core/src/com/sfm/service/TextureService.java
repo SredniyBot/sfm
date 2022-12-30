@@ -16,11 +16,16 @@ public class TextureService {
         for (String s:atlasPaths){
             assetManager.load(s,TextureAtlas.class);
         }
-        assetManager.finishLoading();
     }
 
     public static TextureRegion getTextureRegion(String atlas,String textureName){
         return assetManager.<TextureAtlas>get(atlas).findRegion(textureName);
     }
 
+    public static boolean isUpdated(){
+        return assetManager.update();
+    }
+    public static float getProgress(){
+        return assetManager.getProgress();
+    }
 }

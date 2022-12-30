@@ -4,7 +4,9 @@ import com.badlogic.gdx.Screen;
 
 public enum ScreenType {
     MAIN_MENU(null),
-    SAKURA_FORTUNE(null);
+    TOM_OF_RA(null),
+    SAKURA_FORTUNE(null),
+    WOLF(null);
 
     private final Screen screen;
     ScreenType(Screen screen){

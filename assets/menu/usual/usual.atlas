@@ -6,14 +6,21 @@ filter: Nearest, Nearest
 repeat: none
 buttons
   rotate: false
-  xy: 0, 275
+  xy: 0, 948
   size: 1920, 1082
   orig: 1920, 1082
   offset: 0, 0
   index: -1
+coins
+  rotate: false
+  xy: 1485, 447
+  size: 146, 131
+  orig: 146, 131
+  offset: 0, 0
+  index: -1
 play
   rotate: false
-  xy: 0, 127
+  xy: 1485, 578
   size: 352, 148
   orig: 352, 148
   offset: 0, 0
@@ -23,6 +30,20 @@ playN
   xy: 0, 0
   size: 331, 127
   orig: 331, 127
+  offset: 0, 0
+  index: -1
+unlock
+  rotate: false
+  xy: 1485, 726
+  size: 481, 222
+  orig: 481, 222
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 0, 127
+  size: 1485, 821
+  orig: 1485, 821
   offset: 0, 0
   index: -1
 
@@ -44,10 +65,10 @@ size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-main
+glow
   rotate: false
   xy: 0, 0
-  size: 1920, 1080
-  orig: 1920, 1080
+  size: 1274, 1254
+  orig: 1274, 1254
   offset: 0, 0
   index: -1

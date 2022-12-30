@@ -6,36 +6,56 @@ filter: Nearest, Nearest
 repeat: none
 lock
   rotate: false
-  xy: 681, 32
-  size: 681, 893
-  orig: 681, 893
+  xy: 0, 925
+  size: 601, 925
+  orig: 601, 925
   offset: 0, 0
   index: -1
 ra
   rotate: false
   xy: 0, 0
-  size: 681, 925
-  orig: 681, 925
+  size: 601, 925
+  orig: 601, 925
   offset: 0, 0
   index: -1
 raL
   rotate: false
-  xy: 1362, 32
-  size: 681, 893
-  orig: 681, 893
+  xy: 601, 925
+  size: 601, 925
+  orig: 601, 925
   offset: 0, 0
   index: -1
 sakura
   rotate: false
-  xy: 822, 925
-  size: 681, 925
-  orig: 681, 925
+  xy: 601, 0
+  size: 601, 925
+  orig: 601, 925
   offset: 0, 0
   index: -1
 sakuraL
   rotate: false
-  xy: 0, 925
-  size: 822, 925
-  orig: 822, 925
+  xy: 1202, 0
+  size: 601, 925
+  orig: 601, 925
+  offset: 0, 0
+  index: -1
+wolf
+  rotate: false
+  xy: 1202, 925
+  size: 601, 925
+  orig: 601, 925
+  offset: 0, 0
+  index: -1
+
+menu2.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+wolfL
+  rotate: false
+  xy: 0, 0
+  size: 601, 925
+  orig: 601, 925
   offset: 0, 0
   index: -1

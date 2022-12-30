@@ -24,7 +24,7 @@ public abstract class Button extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        if (getTextureRegion()!=null&&isPressed)
+        if (getTextureRegion()!=null&&!isPressed)
             batch.draw(getTextureRegion(),getRectX(),getRectY());
     }
 

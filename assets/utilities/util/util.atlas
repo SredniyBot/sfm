@@ -1,0 +1,55 @@
+
+util.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+auto
+  rotate: false
+  xy: 0, 0
+  size: 218, 77
+  orig: 218, 77
+  offset: 0, 0
+  index: -1
+autoN
+  rotate: false
+  xy: 309, 148
+  size: 218, 77
+  orig: 218, 77
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 1920, 1298
+  size: 113, 113
+  orig: 113, 113
+  offset: 0, 0
+  index: -1
+buttons
+  rotate: false
+  xy: 0, 331
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+spin
+  rotate: false
+  xy: 0, 204
+  size: 309, 127
+  orig: 309, 127
+  offset: 0, 0
+  index: -1
+spinN
+  rotate: false
+  xy: 0, 77
+  size: 309, 127
+  orig: 309, 127
+  offset: 0, 0
+  index: -1
+stop
+  rotate: false
+  xy: 309, 225
+  size: 246, 106
+  orig: 246, 106
+  offset: 0, 0
+  index: -1

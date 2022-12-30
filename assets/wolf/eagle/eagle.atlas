@@ -1,0 +1,104 @@
+
+eagle.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+eagle-10
+  rotate: false
+  xy: 0, 2
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-11
+  rotate: false
+  xy: 536, 2
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-13
+  rotate: false
+  xy: 0, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-0
+  rotate: false
+  xy: 0, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-12
+  rotate: false
+  xy: 0, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-2
+  rotate: false
+  xy: 268, 522
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-1
+  rotate: false
+  xy: 268, 522
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-3
+  rotate: false
+  xy: 804, 522
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-4
+  rotate: false
+  xy: 536, 522
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-5
+  rotate: false
+  xy: 0, 522
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-6
+  rotate: false
+  xy: 536, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-7
+  rotate: false
+  xy: 268, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-8
+  rotate: false
+  xy: 804, 262
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
+eagle-9
+  rotate: false
+  xy: 268, 2
+  size: 268, 258
+  orig: 268, 258
+  offset: 0, 0
+  index: -1
