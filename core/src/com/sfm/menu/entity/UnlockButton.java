@@ -26,8 +26,10 @@ public class UnlockButton extends Actor {
     private final GlyphLayout layout;
     private final TextureRegion textureRegion;
     private final int targetWidth;
+    private final CursorCatcher cursorCatcher;
 
-    public UnlockButton(Viewport viewport, BoolRunnable action, float biasX, float y, int w, int h,int cost, XGettter xGettter){
+    public UnlockButton(Viewport viewport, BoolRunnable action, float biasX, float y, int w, int h,
+                        int cost, XGettter xGettter, CursorCatcher cursorCatcher){
         setX(biasX);
         setY(y);
         setWidth(w);
@@ -36,6 +38,7 @@ public class UnlockButton extends Actor {
         textureRegion=TextureService.getTextureRegion("menu/usual/usual.atlas","coins");
         targetWidth=360;
         this.xGettter=xGettter;
+        this.cursorCatcher=cursorCatcher;
         this.viewport=viewport;
         this.action=action;
         this.cost=cost;
@@ -59,16 +62,20 @@ public class UnlockButton extends Actor {
 
     @Override
     public void act(float delta) {
+        if (!isPressed&&cursorCatcher.isCaught())return;
         if (Gdx.input.isTouched()) {
             Vector2 touch = viewport.unproject(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
             if(contains(touch)) {
+                cursorCatcher.setCaught(true);
                 pressureTime+=delta;
                 isPressed=true;
             }else {
+                cursorCatcher.setCaught(false);
                 isPressed=false;
                 pressureTime=0;
             }
         }else {
+            cursorCatcher.setCaught(false);
             isPressed=false;
             if (pressureTime>0&&pressureTime<1){
                 pressureTime=0;

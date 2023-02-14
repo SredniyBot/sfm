@@ -10,6 +10,9 @@ import com.sfm.sakura.entity.SakuraField;
 import com.sfm.sakura.entity.SakuraType;
 import com.sfm.service.TextureService;
 
+/**
+ * Класс стейджа слота сакуры
+ */
 public class SakuraStage extends Stage  {
 
     private final Field<SakuraType> field;

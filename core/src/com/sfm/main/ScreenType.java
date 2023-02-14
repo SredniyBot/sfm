@@ -2,17 +2,13 @@ package com.sfm.main;
 
 import com.badlogic.gdx.Screen;
 
+/**
+ * Новая отдельная активность - новый экран - новый тип экрана
+ * здесь записаны все возможные типы экранов
+ */
 public enum ScreenType {
-    MAIN_MENU(null),
-    TOM_OF_RA(null),
-    SAKURA_FORTUNE(null),
-    WOLF(null);
-
-    private final Screen screen;
-    ScreenType(Screen screen){
-        this.screen=screen;
-    }
-    public Screen getScreen() {
-        return screen;
-    }
+    MAIN_MENU,
+    TOM_OF_RA,
+    SAKURA_FORTUNE,
+    WOLF;
 }

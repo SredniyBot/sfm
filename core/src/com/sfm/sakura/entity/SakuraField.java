@@ -9,7 +9,10 @@ import com.sfm.main.game_utils.BadgeGenerator;
 import com.sfm.main.game_utils.BadgeType;
 import com.sfm.main.game_utils.Field;
 
-
+/**
+ * Реализация Field, комментарии по методам смотри в Field
+ * @param <T>
+ */
 public class SakuraField<T extends BadgeType<T>> extends Field<T> {
 
     public SakuraField(BadgeGenerator<T> badgeGenerator) {

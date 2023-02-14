@@ -11,7 +11,7 @@ public class Respin extends Actor {
     private float time=0;
     private boolean draws=false;
 
-    private static String atlas;//TODO переделать архитектуру
+    private static String atlas;
 
     public Respin(int id, int xp, int yp){
         this.id=id;

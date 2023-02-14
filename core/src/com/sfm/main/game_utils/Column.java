@@ -3,15 +3,21 @@ package com.sfm.main.game_utils;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
-import com.sfm.service.GameSound;
+import com.sfm.service.util.GameSound;
 import com.sfm.service.SoundService;
 
 
 import java.util.Comparator;
 
-
+/**
+ * Класс столбика в слоте,
+ * @param <T> тип карточки в слоте, из которой собирается столбик
+ */
 public class Column<T extends BadgeType<T>> extends Group {
 
+    /**
+     * Список карточек идущих подряд
+     */
     private Array<Badge<T>> badges;
 
     private SpinMoment spinMoment;
@@ -20,7 +26,7 @@ public class Column<T extends BadgeType<T>> extends Group {
     private int finalOffset=0;
     private final int sizeOfBadge = 255;
     private float v;
-    private BadgeGenerator<T> badgeGenerator;
+    private final BadgeGenerator<T> badgeGenerator;
 
     public Column(int x, float v, ResultChecker resultChecker,BadgeGenerator<T> badgeGenerator) {
         this.v = v;
@@ -31,6 +37,9 @@ public class Column<T extends BadgeType<T>> extends Group {
         complementColumn();
     }
 
+    /**
+     * Добавляет элементы в колонку
+     */
     private void complementColumn(){
         Array<Badge<T>> newBadges=new Array<>();
         int i=0;
@@ -78,20 +87,30 @@ public class Column<T extends BadgeType<T>> extends Group {
     }
 
 
+    /**
+     * отрисовка каждой карточки по отдельности
+     * @param batch автосгенерированнный параметр
+     * @param parentAlpha The parent alpha, to be multiplied with this actor's alpha, allowing the parent's alpha to affect all
+     *           children.
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
     }
 
+    /**
+     * метод движения колонки. выполняется во время игры на столько быстро на сколько возможно
+     * @param delta Time in seconds since the last frame.
+     */
     @Override
     public void act(float delta) {
         super.act(delta);
-        if (badges.get(0).getY()+badges.get(0).getHeight()+getY()<0){
+        if (badges.get(0).getY()+badges.get(0).getHeight()+getY()<0){// удаление карточек, которые вышли за поле
             badges.get(0).remove();
             badges.removeIndex(0);
             complementColumn();
         }
-        switch (spinMoment){
+        switch (spinMoment){// у колонки несколько фаз движений. тут описан процесс перехода из одной фазы в другую
             case STOP:
                 v=0;
                 break;
@@ -145,6 +164,10 @@ public class Column<T extends BadgeType<T>> extends Group {
 
     }
 
+    /**
+     * выравнивает wild, при необходимости
+     * @return true если есть что выравнивать
+     */
     public boolean balanceBadge(){
         badges.sort(new Comparator<Badge<T>>() {
             @Override
@@ -169,6 +192,9 @@ public class Column<T extends BadgeType<T>> extends Group {
         return false;
     }
 
+    /**
+     * @return состояние в котором находится колонка
+     */
     public Array<Badge<T>> getResult(){
         Array<Badge<T>> result=new Array<>();
         badges.sort(new Comparator<Badge<T>>() {
@@ -185,8 +211,6 @@ public class Column<T extends BadgeType<T>> extends Group {
                 result.add(badge);
                 return result;
             }
-//            if(badge.getBias()+badge.getBadgeType().getSize()*sizeOfBadge<=sizeOfBadge*3&&
-//                    badge.getBias()+badge.getBadgeType().getSize()*sizeOfBadge>0){
             for (int i=1;i<=badge.getBadgeType().getSize();i++){
                 if(i*sizeOfBadge+badge.getBias()>0&&i*sizeOfBadge+badge.getBias()<=sizeOfBadge*3){
                     result.add(badge);
@@ -196,7 +220,6 @@ public class Column<T extends BadgeType<T>> extends Group {
                     }
                 }
             }
-//            }
         }
         result.reverse();
         return result;
@@ -206,12 +229,15 @@ public class Column<T extends BadgeType<T>> extends Group {
         return spinMoment != SpinMoment.STOP;
     }
 
+    /**
+     * @param spin количество ячеек, на которые надо сдвинуть колонку
+     */
     public void spinTo(int spin){
         finalOffset= spin*sizeOfBadge;
         spinMoment=SpinMoment.START;
     }
 
-    public enum SpinMoment {
+    private enum SpinMoment {
         STOP,
         START,
         CONTINUE,

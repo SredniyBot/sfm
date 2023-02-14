@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+/**
+ * Класс заднего фона для анонимной реализации
+ */
 public abstract class Background extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {

@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.sfm.main.GameInitializer;
-import com.sfm.service.money.MoneySkin;
-import com.sfm.service.money.SlotMoneySkin;
+import com.sfm.service.util.money.MoneySkin;
+import com.sfm.service.util.money.SlotMoneySkin;
 
+/**
+ * Сервис взаимодействия с деньгами
+ */
 public class MoneyService {
 
     private static int money;
@@ -16,7 +19,7 @@ public class MoneyService {
     private static final MoneySkin moneySkin;
     private static final SlotMoneySkin slotMoneySkin;
 
-    static {
+    static {// Инициация денег, по умолчанию 5000
         Preferences prefs = Gdx.app.getPreferences("money");
         money=prefs.getInteger("money",5000);
         bet=Math.min(100,money);
@@ -32,6 +35,10 @@ public class MoneyService {
         moneySkin.setPosition(200, GameInitializer.SCREEN_HEIGHT-34);
     }
 
+    /**
+     * Изменение ставки
+     * @param grow рост или понижение
+     */
     public static void changeBet(boolean grow){
         if (money==0){
             bet=0;
@@ -56,6 +63,10 @@ public class MoneyService {
         slotMoneySkin.updateBetSkin(bet);
     }
 
+    /**
+     * Старт спина
+     * @return false если ставка 0
+     */
     public static boolean startAndCheckForNull(){
         if (bet==0)return true;
         commit();
@@ -66,6 +77,9 @@ public class MoneyService {
         return false;
     }
 
+    /**
+     * Завершение спина, присваивание выигрыша игроку
+     */
     public static void commit(){
         money+=win;
         win=0;
@@ -82,6 +96,10 @@ public class MoneyService {
         slotMoneySkin.increaseWinSkin(k);
     }
 
+    /**
+     * Покупка
+     * @param cost стоимость покупки
+     */
     public static void buy(int cost){
         money-=cost;
         moneySkin.updateMoney(money);
@@ -89,15 +107,26 @@ public class MoneyService {
         saveMoney();
     }
 
+    /**
+     * Сохранение счета
+     */
     private static void saveMoney(){
         Preferences prefs = Gdx.app.getPreferences("money");
         prefs.putInteger("money",money);
         prefs.flush();
     }
 
+    /**
+     * Скин денег для меню
+     * @return стейдж
+     */
     public static MoneySkin getMoneySkin(){
         return moneySkin;
     }
+    /**
+     * Скин денег для слота
+     * @return стейдж
+     */
     public static SlotMoneySkin getSlotMoneySkin(){
         return slotMoneySkin;
     }

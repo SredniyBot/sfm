@@ -8,6 +8,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+/**
+ * Класс кнопки, предназначен для создания ананимных классов кнопок, путем наследования, смотри примеры
+ */
 public abstract class Button extends Actor {
 
     private final Viewport viewport;
@@ -48,8 +51,22 @@ public abstract class Button extends Actor {
         }
     }
 
+    /**
+     * Действие, которое происходит при нажатии кнопки
+     */
     public abstract void action();
+
+    /**
+     * При реализации указать TextureRegion, который буде показываться если кнопка не нажата
+     * или null, тогда ничего видно не будет
+     * @return
+     */
     public abstract TextureRegion getTextureRegion();
+
+    /**
+     * при реализации указать Rectangle, на который будет работать нажатие кнопки
+     * @return
+     */
     public abstract Rectangle getRectangle();
     public float getRectX(){
         return rectangle.getX();

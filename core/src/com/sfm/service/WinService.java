@@ -1,16 +1,19 @@
 package com.sfm.service;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
+import com.sfm.main.abstracts.Background;
 import com.sfm.main.game_utils.Respin;
 import com.sfm.main.GameInitializer;
+import com.sfm.service.util.Line;
 
-
+/**
+ * Сервис показа респинов, линий побед для слотов и цифр
+ */
 public class WinService extends Group {
-
     private final Array<Line> lines;
     private final Array<Respin> respins;
-
 
     public WinService(){
         lines=new Array<>();
@@ -31,10 +34,14 @@ public class WinService extends Group {
         respins.add(new Respin(3,328,(int) GameInitializer.SCREEN_HEIGHT-400-279));
 
         for (Line line:lines)addActor(line);
+        addActor(new Background() {
+            @Override
+            public TextureRegion getTextureRegion() {
+                return TextureService.getTextureRegion("utilities/lines/lines.atlas","digits");
+            }
+        });
         for (Respin respin:respins)addActor(respin);
     }
-
-
 
     public void showLine(int lineNumber){
         lines.get(lineNumber).startShowing();

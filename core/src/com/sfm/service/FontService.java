@@ -4,6 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+/**
+ * Сервис фона, использование смотреть на примерах
+ * подробности читать в wiki
+ */
 public class FontService {
 
     private static BitmapFont font;

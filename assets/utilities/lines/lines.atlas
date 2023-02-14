@@ -6,44 +6,30 @@ filter: Nearest, Nearest
 repeat: none
 3
   rotate: false
-  xy: 0, 1871
+  xy: 0, 0
   size: 1672, 177
   orig: 1672, 177
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 0, 1871
+  xy: 0, 0
   size: 1672, 177
   orig: 1672, 177
   offset: 0, 0
   index: -1
 4
   rotate: false
-  xy: 0, 256
+  xy: 0, 177
   size: 1611, 777
   orig: 1611, 777
   offset: 0, 0
   index: -1
-6
+digits
   rotate: false
-  xy: 0, 0
-  size: 1580, 256
-  orig: 1580, 256
-  offset: 0, 0
-  index: -1
-8
-  rotate: false
-  xy: 0, 1033
-  size: 1614, 419
-  orig: 1614, 419
-  offset: 0, 0
-  index: -1
-9
-  rotate: false
-  xy: 0, 1452
-  size: 1614, 419
-  orig: 1614, 419
+  xy: 0, 954
+  size: 1920, 1080
+  orig: 1920, 1080
   offset: 0, 0
   index: -1
 
@@ -61,7 +47,7 @@ repeat: none
   index: -1
 5
   rotate: false
-  xy: 0, 313
+  xy: 0, 1151
   size: 1594, 769
   orig: 1594, 769
   offset: 0, 0
@@ -71,5 +57,32 @@ repeat: none
   xy: 0, 55
   size: 1591, 258
   orig: 1591, 258
+  offset: 0, 0
+  index: -1
+8
+  rotate: false
+  xy: 0, 313
+  size: 1614, 419
+  orig: 1614, 419
+  offset: 0, 0
+  index: -1
+9
+  rotate: false
+  xy: 0, 732
+  size: 1614, 419
+  orig: 1614, 419
+  offset: 0, 0
+  index: -1
+
+lines3.png
+size: 2048, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+6
+  rotate: false
+  xy: 0, 0
+  size: 1580, 256
+  orig: 1580, 256
   offset: 0, 0
   index: -1

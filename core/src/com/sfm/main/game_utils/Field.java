@@ -5,12 +5,16 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.sfm.main.GameInitializer;
 import com.sfm.main.abstracts.ButtonGuardian;
-import com.sfm.service.GameSound;
+import com.sfm.service.util.GameSound;
 import com.sfm.service.MoneyService;
 import com.sfm.service.SoundService;
 import com.sfm.service.WinService;
 
-
+/**
+ * Абстрактный класс поля слота, содержит 5 колонок, описывает взаимодействие между ними
+ * Особенности слотов расписываются при наследовании от этого класса и реализации абстрактных методов
+ * @param <T>
+ */
 public abstract class Field<T extends BadgeType<T>> extends Group
         implements ResultChecker, ButtonGuardian {
 
@@ -31,7 +35,6 @@ public abstract class Field<T extends BadgeType<T>> extends Group
     private final Timer timer;
     private final Timer autoTimer;
 
-
     public Field(BadgeGenerator<T> badgeGenerator){
         timer=new Timer();
         autoTimer=new Timer();
@@ -48,6 +51,10 @@ public abstract class Field<T extends BadgeType<T>> extends Group
         addActor(winService);
     }
 
+    /**
+     * начинает спин, пройдя все проверки и списав деньги
+     * @return начался ли спин после вызова
+     */
     public boolean startSpin(){
         if (isLocked())return false;
         if (c1.isSpinning() && c2.isSpinning() && c3.isSpinning() && c4.isSpinning() && c5.isSpinning())return false;
@@ -59,6 +66,9 @@ public abstract class Field<T extends BadgeType<T>> extends Group
         return true;
     }
 
+    /**
+     * начинает спин без проверок
+     */
     private void spin() {
         timer.clear();
         locked=true;
@@ -91,6 +101,10 @@ public abstract class Field<T extends BadgeType<T>> extends Group
         }
     }
 
+    /**
+     * Метод, выполняющийся при остановке всех пяти слотов.
+     * Здесь подсчитываются очки, проигрывается анимация,
+     */
     @SuppressWarnings("unchecked")
     @Override
     public void onSpinFixed() {
@@ -102,7 +116,7 @@ public abstract class Field<T extends BadgeType<T>> extends Group
         Array<Badge<T>> r5 = c5.getResult();
 
         Array<Array<Badge<T>>> l= new Array<>();
-
+        // ниже формирование всевозможных линий победы
         l.add(new Array<>(Array.with(r1.get(1),r2.get(1),r3.get(1),r4.get(1),r5.get(1))));
         l.add(new Array<>(Array.with(r1.get(0),r2.get(0),r3.get(0),r4.get(0),r5.get(0))));
         l.add(new Array<>(Array.with(r1.get(2),r2.get(2),r3.get(2),r4.get(2),r5.get(2))));
@@ -232,10 +246,23 @@ public abstract class Field<T extends BadgeType<T>> extends Group
         MoneyService.commit();
     }
 
+    /**
+     * @param badges состояние поля при его остановке
+     * @return количество респинов в зависимости от того, что выпало
+     */
     protected abstract int getRespins(Array<Badge<T>> badges);
 
+    /**
+     * @param badges состояние поля при его остановке
+     * @return первый тип бейджа, который попался (относительно которого надо строить линию)
+     */
     public abstract BadgeType<T> findFirstBadgeType(Array<Badge<T>> badges);
 
+    /**
+     * @param badgeType первый элемент в линии
+     * @param badges линия
+     * @return бонус поля, получающийся при его остановке
+     */
     public abstract int badgeCount(BadgeType<T> badgeType, Array<Badge<T>> badges);
 
 }

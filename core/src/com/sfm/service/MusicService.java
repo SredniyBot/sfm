@@ -2,28 +2,39 @@ package com.sfm.service;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.sfm.service.util.GameMusic;
 
 
 import java.util.HashMap;
 
+/**
+ * Сервис музыки.
+ */
 public class MusicService {
 
-    private static HashMap<com.sfm.service.Music,Music> tracks;
+    private static HashMap<GameMusic,Music> tracks;
 
-    public static void init(com.sfm.service.Music... texts) {
+    /**
+     * Для проигрывания надо проинициализировать треки, предыдущие треки удалятся из памяти
+     * @param mus вся музыка, которую надо воспроизвести
+     */
+    public static void init(GameMusic... mus) {
         dispose();
         tracks=new HashMap<>();
-        for (com.sfm.service.Music text:texts){
-            Music music=Gdx.audio.newMusic(Gdx.files.internal("music/"+text.getText()));
+        for (GameMusic musInfo:mus){
+            Music music=Gdx.audio.newMusic(Gdx.files.internal("music/"+musInfo.getText()));
             music.setVolume(0.5f);
-            tracks.put(text,music);
+            tracks.put(musInfo,music);
         }
     }
 
-    public static void startLoop(com.sfm.service.Music text){
-        tracks.get(text).setLooping(true);
-
-        tracks.get(text).play();
+    /**
+     * Начать воспроизведение в цикле
+     * @param gameMusic передаваемая музыка для воспроизведения
+     */
+    public static void startLoop(GameMusic gameMusic){
+        tracks.get(gameMusic).setLooping(true);
+        tracks.get(gameMusic).play();
     }
 
     public static void dispose(){

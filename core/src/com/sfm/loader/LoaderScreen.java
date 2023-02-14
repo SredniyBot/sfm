@@ -16,9 +16,8 @@ import com.sfm.ra.stages.RaScreen;
 import com.sfm.sakura.stages.SakuraScreen;
 import com.sfm.service.FontService;
 import com.sfm.service.MoneyService;
-import com.sfm.service.Music;
+import com.sfm.service.util.GameMusic;
 import com.sfm.service.MusicService;
-import com.sfm.service.SoundService;
 import com.sfm.service.TextureService;
 import com.sfm.wolf.stages.WolfScreen;
 
@@ -40,6 +39,12 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
         super(screenSwitcher);
     }
 
+
+    /**
+     * Создаем отдельный от основного репозитарий ассетов, т.к. мы пользуемся загрузочными ассетами
+     * постоянно, они нам нужны всегда
+     * @param viewport
+     */
     @Override
     public void init(Viewport viewport) {
 
@@ -74,6 +79,12 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
         return null;
     }
 
+
+    /**
+     * При изменении экрана нам надо подгружать новые ассеты, звуки стили и тд
+     * переназначать новый активный экран
+     * @param screenType тип экрана на который мы хотим перейти
+     */
     @Override
     public void switchScreen(ScreenType screenType) {
         List<String> textures = new ArrayList<>();
@@ -82,8 +93,8 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
 
         switch (screenType){
             case TOM_OF_RA:
-                MusicService.init(Music.RA);
-                MusicService.startLoop(Music.RA);
+                MusicService.init(GameMusic.RA);
+                MusicService.startLoop(GameMusic.RA);
                 textures.add("tom_of_ra/bird/bird.atlas");
                 textures.add("tom_of_ra/book/book.atlas");
                 textures.add("tom_of_ra/j/j.atlas");
@@ -106,8 +117,8 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
                 });
                 break;
             case SAKURA_FORTUNE:
-                MusicService.init(Music.SAKURA);
-                MusicService.startLoop(Music.SAKURA);
+                MusicService.init(GameMusic.SAKURA);
+                MusicService.startLoop(GameMusic.SAKURA);
                 textures.add("sakura/bronze/bronse.atlas");
                 textures.add("sakura/ded/ded.atlas");
                 textures.add("sakura/green/green.atlas");
@@ -131,8 +142,8 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
                 });
                 break;
             case WOLF:
-                MusicService.init(Music.WOLF);
-                MusicService.startLoop(Music.WOLF);
+                MusicService.init(GameMusic.WOLF);
+                MusicService.startLoop(GameMusic.WOLF);
                 textures.add("wolf/A/A.atlas");
                 textures.add("wolf/K/K.atlas");
                 textures.add("wolf/Q/Q.atlas");
@@ -156,9 +167,10 @@ public class LoaderScreen extends StretchedScreen implements ScreenSwitcher{
                 break;
             case MAIN_MENU:
             default:
-                MusicService.init(Music.MENU);
-                MusicService.startLoop(Music.MENU);
+                MusicService.init(GameMusic.MENU);
+                MusicService.startLoop(GameMusic.MENU);
                 textures.add("menu/menu/menu.atlas");
+                textures.add("menu/slider/slider.atlas");
                 textures.add("menu/usual/usual.atlas");
                 FontService.init();
                 TextureService.init(textures);

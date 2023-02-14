@@ -13,6 +13,13 @@ import com.sfm.main.GameInitializer;
 import com.sfm.main.ScreenSwitcher;
 import com.sfm.main.ScreenType;
 
+/**
+ * Абстрактный класс, реализующий взаимодействие между 4 stage -
+ * backgroundStage - задний фон
+ * mainStage - основной стейдж слота
+ * topgroundStage - какой-либо фон поверх слота
+ * supportStage - стейдж для кнопок
+ */
 public abstract class StretchedScreen implements Screen {
 
     private final Viewport mViewport;

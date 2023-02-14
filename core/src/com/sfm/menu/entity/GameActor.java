@@ -1,12 +1,11 @@
 package com.sfm.menu.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.main.ScreenSwitcher;
-import com.sfm.service.GameSound;
+import com.sfm.service.util.GameSound;
 import com.sfm.service.MoneyService;
 import com.sfm.service.SoundService;
 import com.sfm.service.TextureService;
@@ -39,7 +38,7 @@ public class GameActor extends Group implements XGettter{
 
 
     GameActor(Viewport viewport, final Game game, final ScreenSwitcher runnable, float x, float y,
-              XGettter xGettter, Animator animator){
+              XGettter xGettter, Animator animator, CursorCatcher cursorCatcher){
         setX(x);
         setY(y);
         timer=new Timer();
@@ -50,7 +49,7 @@ public class GameActor extends Group implements XGettter{
             @Override
             public void run() {
                 runnable.switchScreen(game.getScreenType());}},
-                game.getBiasX(),199,330,125,this);
+                game.getBiasX(),199,330,125,this,cursorCatcher);
 
         if (game.isOpened()){
             addActor(playButton);
@@ -60,7 +59,7 @@ public class GameActor extends Group implements XGettter{
                 public boolean run() {
                     SoundService.playSound(GameSound.BUTTON);
                     return unlock();}},
-                    game.getBiasX(),323-130f,470,220, game.getCost(), this));
+                    game.getBiasX(),323-130f,470,220, game.getCost(), this,cursorCatcher));
         }
     }
 

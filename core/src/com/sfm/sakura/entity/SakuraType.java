@@ -5,6 +5,11 @@ import com.sfm.main.game_utils.BadgeType;
 
 import java.util.Random;
 
+/**
+ * Реализация BadgeType в виде enum. Перечисляются все карточки с параметрами, указваются отступы с
+ * двух сторон, размеры карточек, цена, и положение в assets
+ *
+ */
 public enum SakuraType implements BadgeType<SakuraType> {
     LADY        (0,3,45,63,  45,0.04f, 6   , 6   , 6, "sakura/lady/lady.atlas", "lady"),
     SWORD       (1,2,25,30,  56,0.04f, 3f  , 4f  , 5f, "sakura/sword/sword.atlas", "sword"),

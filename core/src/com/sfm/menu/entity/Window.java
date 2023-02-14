@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sfm.main.GameInitializer;
 import com.sfm.main.abstracts.Button;
 import com.sfm.service.FontService;
-import com.sfm.service.GameSound;
+import com.sfm.service.util.GameSound;
 import com.sfm.service.SoundService;
 import com.sfm.service.TextureService;
 

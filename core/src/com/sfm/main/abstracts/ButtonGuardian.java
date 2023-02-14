@@ -1,5 +1,8 @@
 package com.sfm.main.abstracts;
 
+/**
+ * Интерфейс взаимодействия поля с кнопками
+ */
 public interface ButtonGuardian {
 
     boolean startSpin();

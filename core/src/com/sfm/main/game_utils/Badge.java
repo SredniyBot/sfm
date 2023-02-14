@@ -5,12 +5,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.sfm.main.GameInitializer;
 import com.sfm.service.TextureService;
 
+/**
+ * класс значка на поле
+ * @param <T> тип значка, задатся после создания нового слота
+ */
 public class Badge<T extends BadgeType<T>> extends Actor {
 
     private final T badgeType;
     private int bias;
-
-
     private int frame =0;
     private float time=0;
     private boolean animate=false;

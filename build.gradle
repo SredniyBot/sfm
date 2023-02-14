@@ -11,8 +11,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.16'
-        
-
+        classpath 'com.google.gms:google-services:4.3.14'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'
     }
 }
 
@@ -57,10 +57,15 @@ project(":desktop") {
 
 project(":android") {
     apply plugin: "com.android.application"
+    apply plugin: 'com.google.firebase.crashlytics'
+//    apply plugin: 'com.google.gms.google-services'
+//    apply plugin: 'com.google.firebase.crashlytics'
 
     configurations { natives }
 
     dependencies {
+
+
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -77,35 +82,34 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
-        
+
+        implementation "pl.mk5.gdx-fireapp:gdx-fireapp-android:3.3.1"
+        implementation platform("com.google.firebase:firebase-bom:25.12.0")
+        implementation 'com.google.firebase:firebase-core'
+        implementation 'com.google.firebase:firebase-storage'
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-database'
+        implementation 'com.google.firebase:firebase-crashlytics'
+        implementation 'com.google.firebase:firebase-analytics'
+        implementation 'com.google.firebase:firebase-crashlytics'
+        implementation 'com.google.android.gms:play-services-auth:20.4.0'
     }
+    repositories {
+        maven { url 'https://maven.google.com' }
+        google()
+        // or google() depends of your build tools version.
+    }
+    apply plugin: 'com.google.gms.google-services'
 }
 
-project(":ios") {
-    apply plugin: "java-library"
-    apply plugin: "robovm"
-
-
-    dependencies {
-        implementation project(":core")
-        api "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
-        api "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
-        api "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
-        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
-        api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
-        
-    }
-}
 
 project(":core") {
     apply plugin: "java-library"
-
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        
+        implementation "pl.mk5.gdx-fireapp:gdx-fireapp-core:3.3.1"
     }
 }
