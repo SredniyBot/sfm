@@ -13,7 +13,7 @@ import com.sfm.service.TextureService;
 public class GameChooseField extends Group implements XGettter,WindowShower{
 
     private float prvX=0;
-    private float maxX=600;
+    private float maxX=0;
     private boolean isPressed=false;
     private final Viewport viewport;
     private final Window window;
@@ -34,7 +34,7 @@ public class GameChooseField extends Group implements XGettter,WindowShower{
             addActor(new GameActor(viewport, game, screenSwitcher,maxX,0,this, animator,cursorCatcher));
             maxX+= TextureService.getTextureRegion("menu/menu/menu.atlas",game.getTexture()).getRegionWidth();
         }
-        addActor(new Slider(viewport,cursorCatcher,this));
+//        addActor(new Slider(viewport,cursorCatcher,this));
     }
 
     @Override
